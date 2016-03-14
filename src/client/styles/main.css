@@ -1,0 +1,27 @@
+
+.container {
+  background-color: #eee;
+}
+
+.cart {
+  background-color: #ddd;
+  padding: 15px;
+  margin-bottom: 5px;
+}
+
+.item {
+  background-color: #fff;
+  padding: 10px;
+}
+
+.channel {
+  background-color: #ccc;
+  padding: 15px;
+  margin-bottom: 5px;
+}
+
+.show {
+  color: white;
+  background-color: #333;
+  padding: 4px;
+}
