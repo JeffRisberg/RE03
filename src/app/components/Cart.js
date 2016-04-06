@@ -1,28 +1,19 @@
 import React from 'react/addons';
 import Item from './Item';
 
-/*
- * @class Cart
- * @extends React.Component
+/**
+ * The Cart component contains a list of Items
  */
 class Cart extends React.Component {
 
-  /*
-   * @method shouldComponentUpdate
-   * @returns {Boolean}
-   */
   shouldComponentUpdate () {
     return React.addons.PureRenderMixin.shouldComponentUpdate.apply(this, arguments);
   }
 
-  /*
-   * @method render
-   * @returns {JSX}
-   */
   render () {
     return <div className="cart">
       <h2>Cart: {this.props.cart.title}</h2>
-      <table>
+      <table className="table">
         {this.props.cart.items.map(function (item, key) {
           return <Item key={key} item={item} />;
         })}
@@ -33,7 +24,7 @@ class Cart extends React.Component {
 
 // Prop types validation
 Cart.propTypes = {
-  cart: React.PropTypes.object.isRequired,
+  cart: React.PropTypes.object.isRequired
 };
 
 export default Cart;
