@@ -1,4 +1,4 @@
-import React from 'react/addons';
+import React from 'react';
 import Show from './Show';
 
 /*
@@ -7,18 +7,6 @@ import Show from './Show';
  */
 class Channel extends React.Component {
 
-  /*
-   * @method shouldComponentUpdate
-   * @returns {Boolean}
-   */
-  shouldComponentUpdate () {
-    return React.addons.PureRenderMixin.shouldComponentUpdate.apply(this, arguments);
-  }
-
-  /*
-   * @method render
-   * @returns {JSX}
-   */
   render () {
     return <div className="channel">
       <h2>Channel: {this.props.channel.title}</h2>
@@ -30,10 +18,5 @@ class Channel extends React.Component {
     </div>;
   }
 }
-
-// Prop types validation
-Channel.propTypes = {
-  channel: React.PropTypes.object.isRequired
-};
 
 export default Channel;

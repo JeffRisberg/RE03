@@ -1,14 +1,10 @@
-import React from 'react/addons';
+import React from 'react';
 import Item from './Item';
 
 /**
  * The Cart component contains a list of Items
  */
 class Cart extends React.Component {
-
-  shouldComponentUpdate () {
-    return React.addons.PureRenderMixin.shouldComponentUpdate.apply(this, arguments);
-  }
 
   render () {
     return <div className="cart">
@@ -21,10 +17,5 @@ class Cart extends React.Component {
     </div>;
   }
 }
-
-// Prop types validation
-Cart.propTypes = {
-  cart: React.PropTypes.object.isRequired
-};
 
 export default Cart;
