@@ -3,9 +3,9 @@
   background-color: #eee;
 }
 
-.cart {
+.itemList {
   background-color: #ddd;
-  padding: 15px;
+  padding: 5px;
   margin-bottom: 5px;
 }
 
@@ -14,14 +14,14 @@
   padding: 10px;
 }
 
-.channel {
-  background-color: #ccc;
-  padding: 15px;
+.eventList {
+  background-color: #eee;
+  padding: 5px;
   margin-bottom: 5px;
 }
 
-.show {
+.event {
   color: white;
   background-color: #333;
-  padding: 4px;
+  padding: 10px;
 }

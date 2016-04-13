@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 
 import AppRoot from './components/AppRoot.js';
 
-console.log(AppRoot);
+const render = () => {
+    ReactDOM.render(
+        <AppRoot />,
+        document.getElementById('app-root')
+    );
+};
 
-ReactDOM.render(
-    <AppRoot />,
-    document.getElementById('app-root')
-);
+render();
