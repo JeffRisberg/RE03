@@ -1,11 +1,9 @@
 import React from 'react';
-//import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 import { addEvent } from '../actions';
 
-import store from '../store'
-
-let AddEvent = () => {
+let AddEvent = ({dispatch}) => {
   let input;
   let time;
 
@@ -18,7 +16,7 @@ let AddEvent = () => {
         time = node;
       }} />
       <button onClick={() => {
-        store.dispatch(addEvent(input.value, time.value));
+        dispatch(addEvent(input.value, time.value));
         input.value = '';
         time.value = '';
       }}>
@@ -27,4 +25,5 @@ let AddEvent = () => {
     </div>
   );
 };
-export default AddEvent;
+
+export default connect()(AddEvent);

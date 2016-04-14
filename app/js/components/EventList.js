@@ -1,25 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import Event from './Event';
+
+import { toggleEvent } from '../actions';
 
 class EventList extends React.Component {
 
-    componentDidMount() {
-        var store = this.props.store;
-        this.unsubscribe = store.subscribe(() => {
-            this.forceUpdate();
-        });
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
-
     render() {
-        const store = this.props.store;
-        const events = store.getState().events;
+        const events = this.props.events;
 
         const eventNodes = events.map(function (event, key) {
-            return <Event key={key} event={event} store={store}/>;
+            return <Event key={key} event={event} onClick={() => onEventClick(item.id)} />;
         });
 
         return (
@@ -32,4 +24,20 @@ class EventList extends React.Component {
     }
 }
 
-export default EventList;
+const mapStateToProps = (state) => {
+    return {
+        events: state.events
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onEventClick: (id) => {
+            dispatch(toggleEvent(id));
+        }
+    };
+};
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(EventList);
+

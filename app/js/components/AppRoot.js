@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import store from '../store';
-
 import AddItem from './AddItem';
+import ItemList from './ItemList';
 import AddEvent from './AddEvent';
 import EventList from './EventList';
-import ItemList from './ItemList';
 
 class AppRoot extends React.Component {
 
@@ -15,10 +13,10 @@ class AppRoot extends React.Component {
             <div className="container">
                 <h1>RE03 Inventory</h1>
 
-                <AddItem store={store}/>
-                <ItemList store={store}/>
-                <AddEvent store={store}/>
-                <EventList store={store}/>
+                <AddItem/>
+                <ItemList/>
+                <AddEvent/>
+                <EventList/>
             </div>
         );
     }

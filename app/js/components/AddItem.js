@@ -1,11 +1,9 @@
 import React from 'react';
-//import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 import { addItem } from '../actions';
 
-import store from '../store'
-
-let AddItem = () => {
+let AddItem = ({dispatch}) => {
   let input;
 
   return (
@@ -14,7 +12,7 @@ let AddItem = () => {
         input = node;
       }} />
       <button onClick={() => {
-        store.dispatch(addItem(input.value));
+        dispatch(addItem(input.value));
         input.value = '';
       }}>
         Add Item
@@ -22,4 +20,5 @@ let AddItem = () => {
     </div>
   );
 };
-export default AddItem;
+
+export default connect()(AddItem);

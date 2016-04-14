@@ -1,25 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import Item from './Item';
 
 class ItemList extends React.Component {
 
-    componentDidMount() {
-        var store = this.props.store;
-        this.unsubscribe = store.subscribe(() => {
-            this.forceUpdate();
-        });
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
-
     render() {
-        const store = this.props.store;
-        const items = store.getState().items;
+        const items = this.props.items;
 
         const itemNodes = items.map(function (item, key) {
-            return <Item key={key} item={item} store={store}/>;
+            return <Item key={key} item={item} />;
         });
 
         return (
@@ -34,4 +24,18 @@ class ItemList extends React.Component {
     }
 }
 
-export default ItemList;
+const mapStateToProps = (state) => {
+    return {
+        items: state.items
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+    };
+};
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ItemList);
+
+

@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
 import AppRoot from './components/AppRoot.js';
 
-const render = () => {
-    ReactDOM.render(
-        <AppRoot />,
-        document.getElementById('app-root')
-    );
-};
+import store from './store';
 
-render();
+ReactDOM.render(
+    <Provider store={store}>
+        <AppRoot />
+    </Provider>,
+    document.getElementById('app-root')
+);
+
