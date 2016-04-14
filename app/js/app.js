@@ -6,6 +6,8 @@ import AppRoot from './components/AppRoot.js';
 
 import store from './store';
 
+import { fetchItems, fetchEvents } from './actions/index.js';
+
 ReactDOM.render(
     <Provider store={store}>
         <AppRoot />
@@ -13,3 +15,6 @@ ReactDOM.render(
     document.getElementById('app-root')
 );
 
+fetchItems()(store.dispatch);
+
+fetchEvents()(store.dispatch);
