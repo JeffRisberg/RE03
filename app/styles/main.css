@@ -3,6 +3,11 @@
   background-color: #eee;
 }
 
+.navbar-default .navbar-nav > li > a.active {
+    background: #ddd;
+    text-decoration: none;
+}
+
 .itemList {
   background-color: #ddd;
   padding: 5px;

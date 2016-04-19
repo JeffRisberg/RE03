@@ -8,10 +8,10 @@ class AppRoot extends React.Component {
     render() {
         return (
             <div>
-                <div className="navbar" style={{marginBottom: '0px'}}>
+                <div className="navbar navbar-default" style={{marginBottom: '0px'}}>
                     <div className="navbar-inner">
                         <div className="navbar-collapse collapse">
-                            <ul className="nav navbar-nav" style={{background: '#ddd'}}>
+                            <ul className="nav navbar-nav">
                                 <li><NavLink to="/items">Items</NavLink></li>
                                 <li><NavLink to="/events">Events</NavLink></li>
                             </ul>

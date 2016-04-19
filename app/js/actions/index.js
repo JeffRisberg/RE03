@@ -73,6 +73,23 @@ export const receiveEvents = (events) => {
 };
 
 export const addEvent = (text, time) => {
+    fetch("/api/events", {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            event: {
+                text: text,
+                time: time,
+                completed: false
+            }
+        })
+    }).then(response => {
+        console.log(response);
+    });
+
     return {
         type: 'ADD_EVENT',
         id: nextEventId++,
