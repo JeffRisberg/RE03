@@ -1,13 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { fetchEvents } from '../actions/index.js';
 
 import EventList from './EventList';
 import AddEvent from './AddEvent';
 
 class EventPage extends React.Component {
 
+    componentDidMount() {
+        this.props.onMount();
+    }
+
     render() {
         return (
-            <div className="eventList">
+            <div className="eventPage">
                 <AddEvent/>
                 <EventList/>
             </div>
@@ -15,4 +22,17 @@ class EventPage extends React.Component {
     }
 }
 
-export default EventPage;
+const mapStateToProps = (state) => {
+    return {};
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onMount: () => {
+            fetchEvents()(dispatch);
+        }
+    };
+};
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(EventPage);

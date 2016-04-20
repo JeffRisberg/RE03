@@ -1,13 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import ItemList from './ItemList';
 import AddItem from './AddItem';
 
+import { fetchItems } from '../actions/index.js';
+
 class ItemPage extends React.Component {
+
+    componentDidMount() {
+        this.props.onMount();
+    }
 
     render() {
         return (
-            <div className="itemList">
+            <div className="itemPage">
                 <AddItem/>
                 <ItemList/>
             </div>
@@ -15,4 +22,18 @@ class ItemPage extends React.Component {
     }
 }
 
-export default ItemPage;
+const mapStateToProps = (state) => {
+    return {
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onMount: () => {
+            fetchItems()(dispatch);
+        }
+    };
+};
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ItemPage);
