@@ -22,7 +22,6 @@ module.exports = function (app) {
         // Look for the most recently created record
         eventsDB.find({}).sort({id: -1}).limit(1).exec(function (err, events) {
 
-            console.log(req.body.event);
             if (events.length != 0)
                 req.body.event.id = events[0].id + 1;
             else
@@ -31,7 +30,7 @@ module.exports = function (app) {
             // Insert the new record
             eventsDB.insert(req.body.event, function (err, newEvent) {
                 res.status(201);
-                res.send(JSON.stringify({event: newEvent}));
+                res.send(JSON.stringify({status: 'ok', data: [newEvent]}));
             })
         });
     });

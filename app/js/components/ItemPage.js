@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import ItemList from './ItemList';
 import AddItem from './AddItem';
 
-import { fetchItems } from '../actions/items';
+import { queryItems } from '../actions/items';
 
 class ItemPage extends React.Component {
 
@@ -29,7 +29,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onMount: () => {
-            fetchItems()(dispatch);
+            queryItems()(dispatch);
         }
     };
 };

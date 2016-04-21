@@ -1,49 +1,42 @@
-
-const event = (state, action) => {
-    switch (action.type) {
-        case 'ADD_EVENT':
-            return {
-                id: action.id,
-                text: action.text,
-                description: "description",
-                time: action.time,
-                completed: false
-            };
-        default:
-            return state;
-    }
-};
-
 const events = (state = [], action = {}) => {
     switch (action.type) {
-        case 'ADD_EVENT':
-            return [
-                ...state,
-                event(undefined, action)
-            ];
-        case 'TOGGLE_EVENT':
+        case 'REPLACE_EVENTS': // clear prior events
         {
-            const target = state.records[action.id];
-            const x = state.records;
-            const records = { ...x };
-
-            if (target != null) {
-                records[action.id] = { ...target, completed: !target.completed}
-            }
-
-            return {idList: state.idList, records: records};
-        }
-        case 'RECEIVE_EVENTS':
-        {
-            const idList = action.events.map(record => record.id);
+            const idList = [];
             const records = {};
 
             action.events.forEach(record => {
                 records[record.id] = record;
+                idList.push(record.id);
             });
 
             return {idList, records};
         }
+        case 'APPEND_EVENTS':
+        {
+            const idList = state.idList;
+            const records = state.records;
+
+            action.events.forEach(record => {
+                records[record.id] = record;
+                idList.push(record.id);
+            });
+
+            return {idList, records};
+        }
+        case 'TOGGLE_EVENT':
+        {
+            const priorRecords = state.records;
+            const target = priorRecords[action.id];
+            const records = {...priorRecords};
+
+            if (target != null) {
+                records[action.id] = {...target, completed: !target.completed}
+            }
+
+            return {idList: state.idList, records: records};
+        }
+
         default:
             return state;
     }

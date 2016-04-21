@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchEvents } from '../actions/events';
+import { queryEvents } from '../actions/events';
 
 import EventList from './EventList';
 import AddEvent from './AddEvent';
@@ -28,7 +28,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onMount: () => {
-            fetchEvents()(dispatch);
+            queryEvents()(dispatch);
         }
     };
 };

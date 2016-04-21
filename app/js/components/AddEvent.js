@@ -16,7 +16,7 @@ let AddEvent = ({dispatch}) => {
         time = node;
       }} />
       <button onClick={() => {
-        dispatch(addEvent(input.value, time.value));
+        addEvent(input.value, time.value)(dispatch);
         input.value = '';
         time.value = '';
       }}>

@@ -1,6 +1,22 @@
 import fetch from 'isomorphic-fetch';
 
-let nextItemId = 10;
+export const queryItems = () => {
+    return function (dispatch) {
+
+        return fetch('/api/items', {})
+            .then(response => response.json())
+            .then((json) => {
+                dispatch(replaceItems(json.data));
+            });
+    };
+};
+
+export const replaceItems = (items) => {
+    return {
+        type: 'REPLACE_ITEMS',
+        items
+    };
+};
 
 export const fetchItem = (id) => {
     return function (dispatch) {
@@ -8,59 +24,40 @@ export const fetchItem = (id) => {
         return fetch('/api/items/' + id, {})
             .then(response => response.json())
             .then((json) => {
-                dispatch(receiveItem(json.data));
+                dispatch(appendItems(json.data));
             });
     };
 };
 
-export const receiveItem = (items) => {
+export const appendItems = (items) => {
     return {
-        type: 'RECEIVE_ITEM',
-        items
-    };
-};
-
-export const fetchItems = () => {
-    return function (dispatch) {
-
-        return fetch('/api/items', {})
-            .then(response => response.json())
-            .then((json) => {
-                dispatch(receiveItems(json.data));
-            });
-    };
-};
-
-export const receiveItems = (items) => {
-    return {
-        type: 'RECEIVE_ITEMS',
+        type: 'APPEND_ITEMS',
         items
     };
 };
 
 export const addItem = (text) => {
-    fetch("/api/items", {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            item: {
-                text: text,
-                value: 12,
-                completed: false
-            }
-        })
-    }).then(response => {
-        console.log(response);
-    });
+    return function (dispatch) {
 
-    return {
-        type: 'ADD_ITEM',
-        id: nextItemId++,
-        text
-    };
+        return fetch("/api/items", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                item: {
+                    text: text,
+                    value: 12,
+                    completed: false
+                }
+            })
+        })
+            .then(response => response.json())
+            .then((json) => {
+                dispatch(appendItems(json.data));
+            });
+    }
 };
 
 export const toggleItem = (id) => {

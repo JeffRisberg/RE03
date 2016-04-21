@@ -12,7 +12,7 @@ let AddItem = ({dispatch}) => {
         input = node;
       }} />
       <button onClick={() => {
-        dispatch(addItem(input.value));
+        addItem(input.value)(dispatch);
         input.value = '';
       }}>
         Add Item

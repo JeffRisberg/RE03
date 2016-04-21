@@ -22,7 +22,6 @@ module.exports = function (app) {
         // Look for the most recently created record
         itemsDB.find({}).sort({id: -1}).limit(1).exec(function (err, items) {
 
-            console.log(req.body.item);
             if (items.length != 0)
                 req.body.item.id = items[0].id + 1;
             else
@@ -31,7 +30,7 @@ module.exports = function (app) {
             // Insert the new record
             itemsDB.insert(req.body.item, function (err, newItem) {
                 res.status(201);
-                res.send(JSON.stringify({item: newItem}));
+                res.send(JSON.stringify({status: 'ok', data: [newItem]}));
             })
         });
     });
