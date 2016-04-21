@@ -40,7 +40,7 @@ module.exports = function (app) {
             if (items.length > 0)
                 res.send({
                     'status': 'ok',
-                    'data': items,
+                    'data': items
                 });
             else {
                 res.status(404);
@@ -53,10 +53,6 @@ module.exports = function (app) {
     });
 
     // No changes from here on down
-    itemsRouter.post('/', function (req, res) {
-        res.status(201).end();
-    });
-
     itemsRouter.put('/:id', function (req, res) {
         res.send({
             'items': {

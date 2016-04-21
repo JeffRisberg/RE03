@@ -36,7 +36,7 @@ export const appendItems = (items) => {
     };
 };
 
-export const addItem = (text) => {
+export const addItem = (text, value) => {
     return function (dispatch) {
 
         return fetch("/api/items", {
@@ -48,7 +48,8 @@ export const addItem = (text) => {
             body: JSON.stringify({
                 item: {
                     text: text,
-                    value: 12,
+                    description: "",
+                    value: value,
                     completed: false
                 }
             })

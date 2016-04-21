@@ -32,6 +32,10 @@ class ItemDetail extends React.Component {
                         <td>Value:</td>
                         <td>{item.value}</td>
                     </tr>
+                    <tr>
+                        <td>Completed:</td>
+                        <td>{item.completed}</td>
+                    </tr>
                     </tbody>
                 </table>
             );

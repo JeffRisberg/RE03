@@ -32,6 +32,10 @@ class EventDetail extends React.Component {
                         <td>Time:</td>
                         <td>{event.time}</td>
                     </tr>
+                    <tr>
+                        <td>Completed:</td>
+                        <td>{event.completed}</td>
+                    </tr>
                     </tbody>
                 </table>
             );

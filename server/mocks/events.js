@@ -40,7 +40,7 @@ module.exports = function (app) {
             if (events.length > 0)
                 res.send({
                     'status': 'ok',
-                    'data': events,
+                    'data': events
                 });
             else {
                 res.status(404);
@@ -53,10 +53,6 @@ module.exports = function (app) {
     });
 
     // No changes from here on down
-    eventsRouter.post('/', function (req, res) {
-        res.status(201).end();
-    });
-
     eventsRouter.put('/:id', function (req, res) {
         res.send({
             'events': {
