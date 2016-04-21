@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addEvent } from '../actions';
+import { addEvent } from '../actions/events';
 
 let AddEvent = ({dispatch}) => {
   let input;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addItem } from '../actions';
+import { addItem } from '../actions/items';
 
 let AddItem = ({dispatch}) => {
   let input;

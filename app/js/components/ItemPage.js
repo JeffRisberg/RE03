@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import ItemList from './ItemList';
 import AddItem from './AddItem';
 
-import { fetchItems } from '../actions/index.js';
+import { fetchItems } from '../actions/items';
 
 class ItemPage extends React.Component {
 

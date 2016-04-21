@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchEvents } from '../actions/index.js';
+import { fetchEvents } from '../actions/events';
 
 import EventList from './EventList';
 import AddEvent from './AddEvent';

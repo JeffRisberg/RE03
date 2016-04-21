@@ -6,16 +6,16 @@ import { Provider } from 'react-redux';
 
 import reducers from './reducers';
 
-import AppRoot from './components/AppRoot.js';
-import Home from './components/Home.js';
-import ItemPage from './components/ItemPage.js';
-import EventPage from './components/EventPage.js';
-
-import { fetchItems, fetchEvents } from './actions/index.js';
+import AppRoot from './components/AppRoot';
+import Home from './components/Home';
+import ItemPage from './components/ItemPage';
+import ItemDetail from './components/ItemDetail';
+import EventPage from './components/EventPage';
+import EventDetail from './components/EventDetail';
 
 var inventory = {
-    items: [],
-    events: []
+    items: { idList: [], records: {}},
+    events: { idList: [], records: {}}
 };
 
 const store = createStore(reducers, inventory)
@@ -26,13 +26,11 @@ ReactDOM.render(
             <Route path="/" component={AppRoot}>
                 <IndexRoute component={Home}/>
                 <Route path="/items" component={ItemPage}/>
+                <Route path="/itemDetail/:id" component={ItemDetail}/>
                 <Route path="/events" component={EventPage}/>
+                <Route path="/eventDetail/:id" component={EventDetail}/>
             </Route>
         </Router>
     </Provider>,
     document.getElementById('app-root')
 );
-
-//fetchItems()(store.dispatch);
-
-//fetchEvents()(store.dispatch);

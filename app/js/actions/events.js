@@ -1,58 +1,24 @@
 import fetch from 'isomorphic-fetch';
 
-let nextItemId = 10;
 let nextEventId = 10;
 
-export const fetchItems = () => {
+export const fetchEvent = (id) => {
     return function (dispatch) {
 
-        return fetch('/api/items', {})
+        return fetch('/api/events/' + id, {})
             .then(response => response.json())
             .then((json) => {
-                dispatch(receiveItems(json.items));
+                dispatch(receiveEvent(json.data));
             });
     };
 };
 
-export const receiveItems = (items) => {
+export const receiveEvent = (event) => {
     return {
-        type: 'RECEIVE_ITEMS',
-        items
+        type: 'RECEIVE_EVENT',
+        event
     };
 };
-
-export const addItem = (text) => {
-    fetch("/api/items", {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            item: {
-                text: text,
-                value: 12,
-                completed: false
-            }
-        })
-    }).then(response => {
-        console.log(response);
-    });
-
-    return {
-        type: 'ADD_ITEM',
-        id: nextItemId++,
-        text
-    };
-};
-
-export const toggleItem = (id) => {
-    return {
-        type: 'TOGGLE_ITEM',
-        id
-    };
-};
-
 
 export const fetchEvents = () => {
     return function (dispatch) {
@@ -60,7 +26,7 @@ export const fetchEvents = () => {
         return fetch('/api/events', {})
             .then(response => response.json())
             .then((json) => {
-                dispatch(receiveEvents(json.events));
+                dispatch(receiveEvents(json.data));
             });
     };
 };

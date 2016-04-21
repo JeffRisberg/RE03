@@ -9,15 +9,6 @@ const event = (state, action) => {
                 time: action.time,
                 completed: false
             };
-        case 'TOGGLE_EVENT':
-            if (state.id !== action.id) {
-                return state;
-            }
-
-            return {
-                ...state,
-                completed: !state.completed
-            };
         default:
             return state;
     }
@@ -31,11 +22,28 @@ const events = (state = [], action = {}) => {
                 event(undefined, action)
             ];
         case 'TOGGLE_EVENT':
-            return state.map(t =>
-                    event(t, action)
-            );
+        {
+            const target = state.records[action.id];
+            const x = state.records;
+            const records = { ...x };
+
+            if (target != null) {
+                records[action.id] = { ...target, completed: !target.completed}
+            }
+
+            return {idList: state.idList, records: records};
+        }
         case 'RECEIVE_EVENTS':
-            return action.events;
+        {
+            const idList = action.events.map(record => record.id);
+            const records = {};
+
+            action.events.forEach(record => {
+                records[record.id] = record;
+            });
+
+            return {idList, records};
+        }
         default:
             return state;
     }

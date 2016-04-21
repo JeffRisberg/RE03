@@ -12,7 +12,8 @@ module.exports = function (app) {
         delete req.query["_"];
         eventsDB.find(req.query).exec(function (error, events) {
             res.send({
-                'events': events
+                'status': 'ok',
+                'data': events
             })
         })
     });
@@ -39,11 +40,13 @@ module.exports = function (app) {
         eventsDB.find({id: req.params.id}).exec(function (error, events) {
             if (events.length > 0)
                 res.send({
-                    'data': events[0],
+                    'status': 'ok',
+                    'data': events,
                 });
             else {
                 res.status(404);
                 res.send({
+                    'status': 'missing',
                     'data': null
                 });
             }

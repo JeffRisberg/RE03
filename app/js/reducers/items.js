@@ -1,4 +1,3 @@
-
 const item = (state, action) => {
     switch (action.type) {
         case 'ADD_ITEM':
@@ -8,15 +7,6 @@ const item = (state, action) => {
                 description: "description",
                 value: 1,
                 completed: false
-            };
-        case 'TOGGLE_ITEM':
-            if (state.id !== action.id) {
-                return state;
-            }
-
-            return {
-                ...state,
-                completed: !state.completed
             };
         default:
             return state;
@@ -31,11 +21,28 @@ const items = (state = [], action = {}) => {
                 item(undefined, action)
             ];
         case 'TOGGLE_ITEM':
-            return state.map(t =>
-                    item(t, action)
-            );
+        {
+            const target = state.records[action.id];
+            const x = state.records;
+            const records = { ...x };
+
+            if (target != null) {
+                records[action.id] = { ...target, completed: !target.completed}
+            }
+
+            return {idList: state.idList, records: records};
+        }
         case 'RECEIVE_ITEMS':
-            return action.items;
+        {
+            const idList = action.items.map(record => record.id);
+            const records = {};
+
+            action.items.forEach(record => {
+                records[record.id] = record;
+            });
+
+            return {idList, records};
+        }
         default:
             return state;
     }
