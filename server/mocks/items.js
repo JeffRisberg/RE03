@@ -30,7 +30,7 @@ module.exports = function (app) {
             // Insert the new record
             itemsDB.insert(req.body.item, function (err, newItem) {
                 res.status(201);
-                res.send(JSON.stringify({status: 'ok', data: [newItem]}));
+                res.send({'status': 'ok', 'data': [newItem]});
             })
         });
     });
@@ -52,12 +52,11 @@ module.exports = function (app) {
         });
     });
 
-    // No changes from here on down
     itemsRouter.put('/:id', function (req, res) {
-        res.send({
-            'items': {
-                id: req.params.id
-            }
+        var item = req.body.item;
+
+        itemsDB.update({id: req.params.id}, item, {}, function (err, count) {
+            res.send({'status': 'ok', 'data': [item]});
         });
     });
 

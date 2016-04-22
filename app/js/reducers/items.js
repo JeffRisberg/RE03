@@ -1,6 +1,6 @@
 const items = (state = [], action = {}) => {
     switch (action.type) {
-        case 'REPLACE_ITEMS': // clear prior items
+        case 'RESET_ITEMS': // clear prior items
         {
             const idList = [];
             const records = {};
@@ -18,23 +18,13 @@ const items = (state = [], action = {}) => {
             const records = state.records;
 
             action.items.forEach(record => {
-                records[record.id] = record;
-                idList.push(record.id);
+                const id = record.id;
+
+                records[id] = record;
+                if (idList.indexOf(id) < 0) idList.push(id);
             });
 
             return {idList, records};
-        }
-        case 'TOGGLE_ITEM':
-        {
-            const priorRecords = state.records;
-            const target = priorRecords[action.id];
-            const records = {...priorRecords};
-
-            if (target != null) {
-                records[action.id] = {...target, completed: !target.completed}
-            }
-
-            return {idList: state.idList, records: records};
         }
         default:
             return state;

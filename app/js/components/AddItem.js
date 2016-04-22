@@ -16,7 +16,14 @@ let AddItem = ({dispatch}) => {
         value = node;
       }}/>
             <button onClick={() => {
-        addItem(text.value, value.value)(dispatch);
+        const item = {
+             text: text.value,
+             description: "",
+             value: value.value,
+             completed: false
+        };
+        addItem(item)(dispatch);
+
         text.value = '';
         value.value = '';
       }}>

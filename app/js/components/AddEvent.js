@@ -16,7 +16,14 @@ let AddEvent = ({dispatch}) => {
         time = node;
       }}/>
             <button onClick={() => {
-        addEvent(text.value, time.value)(dispatch);
+        const event = {
+            text: text.value,
+            description: "",
+            time: time.value,
+            completed: false
+        };
+        addEvent(event)(dispatch);
+
         text.value = '';
         time.value = '';
       }}>

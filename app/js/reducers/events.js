@@ -1,6 +1,6 @@
 const events = (state = [], action = {}) => {
     switch (action.type) {
-        case 'REPLACE_EVENTS': // clear prior events
+        case 'RESET_EVENTS': // clear prior events
         {
             const idList = [];
             const records = {};
@@ -18,25 +18,14 @@ const events = (state = [], action = {}) => {
             const records = state.records;
 
             action.events.forEach(record => {
-                records[record.id] = record;
-                idList.push(record.id);
+                const id = record.id;
+
+                records[id] = record;
+                if (idList.indexOf(id) < 0) idList.push(id);
             });
 
             return {idList, records};
         }
-        case 'TOGGLE_EVENT':
-        {
-            const priorRecords = state.records;
-            const target = priorRecords[action.id];
-            const records = {...priorRecords};
-
-            if (target != null) {
-                records[action.id] = {...target, completed: !target.completed}
-            }
-
-            return {idList: state.idList, records: records};
-        }
-
         default:
             return state;
     }

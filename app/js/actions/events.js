@@ -6,15 +6,12 @@ export const queryEvents = () => {
         return fetch('/api/events', {})
             .then(response => response.json())
             .then((json) => {
-                dispatch(replaceEvents(json.data));
+                dispatch(
+                    {
+                        type: 'RESET_EVENTS',
+                        events: json.data
+                    });
             });
-    };
-};
-
-export const replaceEvents = (events) => {
-    return {
-        type: 'REPLACE_EVENTS',
-        events
     };
 };
 
@@ -24,19 +21,37 @@ export const fetchEvent = (id) => {
         return fetch('/api/events/' + id, {})
             .then(response => response.json())
             .then((json) => {
-                dispatch(appendEvents(json.data));
+                dispatch(
+                    {
+                        type: 'APPEND_EVENTS',
+                        events: json.data
+                    });
             });
     };
 };
 
-export const appendEvents = (events) => {
-    return {
-        type: 'APPEND_EVENTS',
-        events
+export const saveEvent = (event) => {
+    return function (dispatch) {
+
+        return fetch('/api/events/' + event.id, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({event: event})
+        })
+            .then(response => response.json())
+            .then((json) => {
+                dispatch({
+                    type: 'APPEND_EVENTS',
+                    events: json.data
+                });
+            });
     };
 };
 
-export const addEvent = (text, time) => {
+export const addEvent = (event) => {
     return function (dispatch) {
 
         return fetch("/api/events", {
@@ -45,25 +60,14 @@ export const addEvent = (text, time) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                event: {
-                    text: text,
-                    description: "",
-                    time: time,
-                    completed: false
-                }
-            })
+            body: JSON.stringify({event: event})
         })
             .then(response => response.json())
             .then((json) => {
-                dispatch(appendEvents(json.data));
+                dispatch({
+                    type: 'APPEND_EVENTS',
+                    events: json.data
+                });
             });
     }
-};
-
-export const toggleEvent = (id) => {
-    return {
-        type: 'TOGGLE_EVENT',
-        id
-    };
 };

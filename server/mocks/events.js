@@ -30,7 +30,7 @@ module.exports = function (app) {
             // Insert the new record
             eventsDB.insert(req.body.event, function (err, newEvent) {
                 res.status(201);
-                res.send(JSON.stringify({status: 'ok', data: [newEvent]}));
+                res.send({'status': 'ok', 'data': [newEvent]});
             })
         });
     });
@@ -52,12 +52,11 @@ module.exports = function (app) {
         });
     });
 
-    // No changes from here on down
     eventsRouter.put('/:id', function (req, res) {
-        res.send({
-            'events': {
-                id: req.params.id
-            }
+        var event = req.body.event;
+
+        eventsDB.update({id: req.params.id}, event, {}, function (err, count) {
+            res.send({'status': 'ok', 'data': [event]});
         });
     });
 
