@@ -13,9 +13,10 @@ class ItemList extends React.Component {
             const id = item.id;
 
             return (
-                <tr key={key} onClick={() => this.props.onClick(item)}>
-                    <td><Link to={'/itemDetail/'+id} className='btn btn-default'>View</Link></td>
-                    <td style={{textDecoration: item.completed ? 'line-through' : 'none'}}>
+                <tr key={key} >
+                    <td><Link to={'/items/detail/'+id} className='btn btn-default'>View</Link></td>
+                    <td style={{textDecoration: item.completed ? 'line-through' : 'none'}}
+                        onClick={() => this.props.onClick(item)}>
                         {item.text}
                     </td>
                     <td className="text-right">${item.value}</td>

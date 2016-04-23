@@ -13,10 +13,11 @@ class EventList extends React.Component {
             const id = event.id;
 
             return (
-                <div key={key} className="event" onClick={() => this.props.onClick(event)}>
-                    <Link to={'/eventDetail/'+id} className='btn btn-default'>View</Link>
+                <div key={key} className="event">
+                    <Link to={'/events/detail/'+id} className='btn btn-default'>View</Link>
                     {' '}
-            <span style={{textDecoration: event.completed ? 'line-through' : 'none'}}>
+            <span style={{textDecoration: event.completed ? 'line-through' : 'none'}}
+                  onClick={() => this.props.onClick(event)}>
                 {event.text}
             </span>
                     {' '}
