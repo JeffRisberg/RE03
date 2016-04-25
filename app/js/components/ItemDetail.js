@@ -55,12 +55,12 @@ class ItemDetail extends React.Component {
                             <td><h2>Item Detail</h2></td>
                         </tr>
                         <tr>
-                            <td>Text</td>
-                            <td><input type="text" ref="text" defaultValue={item.text}/></td>
+                            <td>Text:</td>
+                            <td><input type="text" ref="text" size="50" defaultValue={item.text}/></td>
                         </tr>
                         <tr>
                             <td>Description:</td>
-                            <td><input type="text" ref="description" defaultValue={item.description}/></td>
+                            <td><input type="text" ref="description" size="100" defaultValue={item.description}/></td>
                         </tr>
                         <tr>
                             <td>Value:</td>

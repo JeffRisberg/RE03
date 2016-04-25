@@ -54,12 +54,12 @@ class EventDetail extends React.Component {
                             <td><h2>Event Detail</h2></td>
                         </tr>
                         <tr>
-                            <td>Text</td>
-                            <td><input type="text" ref="text" defaultValue={event.text}/></td>
+                            <td>Text:</td>
+                            <td><input type="text" ref="text" size="50" defaultValue={event.text}/></td>
                         </tr>
                         <tr>
                             <td>Description:</td>
-                            <td><input type="text" ref="description" defaultValue={event.description}/></td>
+                            <td><input type="text" ref="description" size="100" defaultValue={event.description}/></td>
                         </tr>
                         <tr>
                             <td>Time:</td>
