@@ -1,5 +1,7 @@
 import fetch from 'isomorphic-fetch';
 
+import { push } from 'react-router-redux'
+
 export const queryItems = () => {
     return function (dispatch) {
 
@@ -72,7 +74,7 @@ export const addItem = (item) => {
     }
 };
 
-export const deleteItem = (item) => {
+export const deleteItem = (item, thenUrl) => {
     return function (dispatch) {
 
         return fetch('/api/items/' + item.id, {
@@ -83,10 +85,7 @@ export const deleteItem = (item) => {
             }
         })
             .then(() => {
-                dispatch({
-                    type: 'DELETE_ITEMS',
-                    items: [item]
-                });
+                dispatch(push(thenUrl))
             });
     };
 };

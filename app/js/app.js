@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router'
-import { createStore } from 'redux';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { routerReducer, routerMiddleware } from 'react-router-redux'
 
 import reducers from './reducers';
 
@@ -18,11 +19,22 @@ var inventory = {
     events: {idList: [], records: {}}
 };
 
-const store = createStore(reducers, inventory)
+const reducer = combineReducers({
+    ...reducers,
+    routing: routerReducer
+});
+
+const middleware = routerMiddleware(browserHistory);
+
+const store = createStore(
+    reducers,
+    inventory,
+    applyMiddleware(middleware)
+);
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={hashHistory}>
+        <Router history={browserHistory}>
             <Route path="/" component={AppRoot}>
                 <IndexRoute component={Home}/>
                 <Route path="items">

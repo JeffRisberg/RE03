@@ -38,9 +38,7 @@ class EventDetail extends React.Component {
 
         const event = this.props.events.records[this.props.params.id];
 
-        this.props.onDelete(event);
-
-        this.context.router.push('/events');
+        this.props.onDelete(event, "/events"); // after delete, will go to /events
     }
 
     render() {
@@ -105,8 +103,8 @@ const mapDispatchToProps = (dispatch) => {
         onSave: (event) => {
             saveEvent(event)(dispatch);
         },
-        onDelete: (event) => {
-            deleteEvent(event)(dispatch);
+        onDelete: (event, thenUrl) => {
+            deleteEvent(event, thenUrl)(dispatch);
         }
     };
 };

@@ -26,20 +26,6 @@ const items = (state = [], action = {}) => {
 
             return {idList, records};
         }
-        case 'DELETE_ITEMS':
-        {
-            var idList = state.idList;
-            const records = state.records;
-
-            action.items.forEach(record => {
-                const id = record.id;
-
-                idList = idList.filter((thisId) => {return thisId != id});
-                delete records[id];
-            });
-
-            return {idList, records};
-        }
         default:
             return state;
     }

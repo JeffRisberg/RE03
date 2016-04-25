@@ -39,9 +39,7 @@ class ItemDetail extends React.Component {
 
         const item = this.props.items.records[this.props.params.id];
 
-        this.props.onDelete(item);
-
-        this.context.router.push('/items');
+        this.props.onDelete(item, "/items"); // after delete, will go to /items
     }
 
     render() {
@@ -106,8 +104,8 @@ const mapDispatchToProps = (dispatch) => {
         onSave: (item) => {
             saveItem(item)(dispatch);
         },
-        onDelete: (item) => {
-            deleteItem(item)(dispatch);
+        onDelete: (item, thenUrl) => {
+            deleteItem(item, thenUrl)(dispatch);
         }
     };
 };

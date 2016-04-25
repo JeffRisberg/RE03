@@ -1,5 +1,7 @@
 import fetch from 'isomorphic-fetch';
 
+import { push } from 'react-router-redux'
+
 export const queryEvents = () => {
     return function (dispatch) {
 
@@ -72,7 +74,7 @@ export const addEvent = (event) => {
     }
 };
 
-export const deleteEvent = (event) => {
+export const deleteEvent = (event, thenUrl) => {
     return function (dispatch) {
 
         return fetch('/api/events/' + event.id, {
@@ -83,10 +85,7 @@ export const deleteEvent = (event) => {
             }
         })
             .then(() => {
-                dispatch({
-                    type: 'DELETE_EVENTS',
-                    events: [event]
-                });
+                dispatch(push(thenUrl))
             });
     };
 };
