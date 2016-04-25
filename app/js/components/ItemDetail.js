@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
-import { fetchItem, saveItem } from '../actions/items';
+import { fetchItem, saveItem, deleteItem } from '../actions/items';
 
 class ItemDetail extends React.Component {
 
@@ -10,6 +10,7 @@ class ItemDetail extends React.Component {
         super(props, context);
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
@@ -29,6 +30,16 @@ class ItemDetail extends React.Component {
         item.value = value;
 
         this.props.onSave(item);
+
+        this.context.router.push('/items');
+    }
+
+    handleDelete(e) {
+        e.preventDefault();
+
+        const item = this.props.items.records[this.props.params.id];
+
+        this.props.onDelete(item);
 
         this.context.router.push('/items');
     }
@@ -63,7 +74,11 @@ class ItemDetail extends React.Component {
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="submit" value="Submit"/></td>
+                            <td><input type="submit" value="Submit" className="btn btn-default"/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><a onClick={this.handleDelete.bind()} className="btn btn-default">Delete</a></td>
                         </tr>
                         </tbody>
                     </table>
@@ -90,6 +105,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         onSave: (item) => {
             saveItem(item)(dispatch);
+        },
+        onDelete: (item) => {
+            deleteItem(item)(dispatch);
         }
     };
 };

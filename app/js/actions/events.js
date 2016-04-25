@@ -71,3 +71,22 @@ export const addEvent = (event) => {
             });
     }
 };
+
+export const deleteEvent = (event) => {
+    return function (dispatch) {
+
+        return fetch('/api/events/' + event.id, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(() => {
+                dispatch({
+                    type: 'DELETE_EVENTS',
+                    events: [event]
+                });
+            });
+    };
+};

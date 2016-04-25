@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
-import { fetchEvent, saveEvent } from '../actions/events';
+import { fetchEvent, saveEvent, deleteEvent } from '../actions/events';
 
 class EventDetail extends React.Component {
     constructor(props, context) {
         super(props, context);
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
@@ -28,6 +29,16 @@ class EventDetail extends React.Component {
         event.time = time;
 
         this.props.onSave(event);
+
+        this.context.router.push('/events');
+    }
+
+    handleDelete(e) {
+        e.preventDefault();
+
+        const event = this.props.events.records[this.props.params.id];
+
+        this.props.onDelete(event);
 
         this.context.router.push('/events');
     }
@@ -62,7 +73,11 @@ class EventDetail extends React.Component {
                         </tr>
                         <tr>
                             <td></td>
-                            <td><input type="submit" value="Submit"/></td>
+                            <td><input type="submit" value="Submit" className="btn btn-default"/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><a onClick={this.handleDelete.bind()} className="btn btn-default">Delete</a></td>
                         </tr>
                         </tbody>
                     </table>
@@ -89,6 +104,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         onSave: (event) => {
             saveEvent(event)(dispatch);
+        },
+        onDelete: (event) => {
+            deleteEvent(event)(dispatch);
         }
     };
 };

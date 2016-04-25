@@ -61,7 +61,9 @@ module.exports = function (app) {
     });
 
     itemsRouter.delete('/:id', function (req, res) {
-        res.status(204).end();
+        itemsDB.remove({id: req.params.id}, {}, function (err, count) {
+            res.status(204).end();
+        });
     });
 
     app.use('/api/items', itemsRouter);

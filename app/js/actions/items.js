@@ -72,3 +72,23 @@ export const addItem = (item) => {
     }
 };
 
+export const deleteItem = (item) => {
+    return function (dispatch) {
+
+        return fetch('/api/items/' + item.id, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(() => {
+                dispatch({
+                    type: 'DELETE_ITEMS',
+                    items: [item]
+                });
+            });
+    };
+};
+
+

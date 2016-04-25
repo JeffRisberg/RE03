@@ -20,8 +20,22 @@ const events = (state = [], action = {}) => {
             action.events.forEach(record => {
                 const id = record.id;
 
-                records[id] = record;
                 if (idList.indexOf(id) < 0) idList.push(id);
+                records[id] = record;
+            });
+
+            return {idList, records};
+        }
+        case 'DELETE_EVENTS':
+        {
+            var idList = state.idList;
+            var records = state.records;
+
+            action.events.forEach(record => {
+                const id = record.id;
+
+                idList = idList.filter((thisId) => {return thisId != id});
+                delete records[id];
             });
 
             return {idList, records};
