@@ -51,7 +51,7 @@ class EventDetail extends React.Component {
                         <tbody>
                         <tr>
                             <td></td>
-                            <td>Event Detail</td>
+                            <td><h2>Event Detail</h2></td>
                         </tr>
                         <tr>
                             <td>Text</td>

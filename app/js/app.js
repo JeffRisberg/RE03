@@ -5,7 +5,8 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 
-import reducers from './reducers';
+import items from './reducers/items';
+import events from './reducers/events';
 
 import AppRoot from './components/AppRoot';
 import Home from './components/Home';
@@ -19,15 +20,16 @@ var inventory = {
     events: {idList: [], records: {}}
 };
 
-const reducer = combineReducers({
-    ...reducers,
+const combinedReducers = combineReducers({
+    items,
+    events,
     routing: routerReducer
 });
 
 const middleware = routerMiddleware(browserHistory);
 
 const store = createStore(
-    reducers,
+    combinedReducers,
     inventory,
     applyMiddleware(middleware)
 );

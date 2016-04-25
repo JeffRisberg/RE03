@@ -52,7 +52,7 @@ class ItemDetail extends React.Component {
                         <tbody>
                         <tr>
                             <td></td>
-                            <td>Item Detail</td>
+                            <td><h2>Item Detail</h2></td>
                         </tr>
                         <tr>
                             <td>Text</td>
