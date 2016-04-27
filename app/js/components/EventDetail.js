@@ -13,7 +13,11 @@ class EventDetail extends React.Component {
     }
 
     componentDidMount() {
-        this.props.onMount(this.props.params.id);
+        var id = this.props.params.id;
+        var item = this.props.events.records[id];
+
+        if (item == null)
+            this.props.doFetch(id);
     }
 
     handleSubmit(e) {
@@ -28,7 +32,7 @@ class EventDetail extends React.Component {
         event.description = description;
         event.time = time;
 
-        this.props.onSave(event);
+        this.props.doSave(event);
 
         this.context.router.push('/events');
     }
@@ -38,7 +42,7 @@ class EventDetail extends React.Component {
 
         const event = this.props.events.records[this.props.params.id];
 
-        this.props.onDelete(event, "/events"); // after delete, will go to /events
+        this.props.doDelete(event, "/events"); // after delete, will go to /events
     }
 
     render() {
@@ -97,13 +101,13 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        onMount: (id) => {
+        doMount: (id) => {
             fetchEvent(id)(dispatch);
         },
-        onSave: (event) => {
+        doSave: (event) => {
             saveEvent(event)(dispatch);
         },
-        onDelete: (event, thenUrl) => {
+        doDelete: (event, thenUrl) => {
             deleteEvent(event, thenUrl)(dispatch);
         }
     };
