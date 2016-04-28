@@ -15,7 +15,7 @@ import ItemDetail from './components/ItemDetail';
 import EventPage from './components/EventPage';
 import EventDetail from './components/EventDetail';
 
-var inventory = {
+var initialContent = {
     items: {idList: [], records: {}},
     events: {idList: [], records: {}}
 };
@@ -30,7 +30,7 @@ const middleware = routerMiddleware(browserHistory);
 
 const store = createStore(
     combinedReducers,
-    inventory,
+    initialContent,
     applyMiddleware(middleware)
 );
 
