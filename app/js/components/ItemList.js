@@ -13,7 +13,7 @@ class ItemList extends React.Component {
             const id = item.id;
 
             return (
-                <tr key={key} >
+                <tr key={key}>
                     <td><Link to={'/items/detail/'+id} className='btn btn-default'>View</Link></td>
                     <td style={{textDecoration: item.completed ? 'line-through' : 'none'}}
                         onClick={() => this.props.onClick(item)}>
@@ -28,6 +28,14 @@ class ItemList extends React.Component {
         return (
             <div className="itemList">
                 <table className="table">
+                    <thead>
+                    <tr>
+                        <th>{''}</th>
+                        <th>Text</th>
+                        <th className="text-right">Value</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
                     <tbody>
                     {itemNodes}
                     </tbody>
@@ -45,7 +53,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onClick: (item) => {
-            var newItem = { ...item, completed: !item.completed };
+            var newItem = {...item, completed: !item.completed};
             saveItem(newItem)(dispatch);
         }
     };

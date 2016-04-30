@@ -102,14 +102,14 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchItem: (id) => {
-            doFetch(id)(dispatch);
+        doFetch: (id) => {
+            fetchItem(id)(dispatch);
         },
-        saveItem: (item) => {
-            doSave(item)(dispatch);
+        doSave: (item) => {
+            saveItem(item)(dispatch);
         },
-        deleteItem: (item, thenUrl) => {
-            doDelete(item, thenUrl)(dispatch);
+        doDelete: (item, thenUrl) => {
+            deleteItem(item, thenUrl)(dispatch);
         }
     };
 };

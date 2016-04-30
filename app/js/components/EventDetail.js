@@ -101,7 +101,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        doMount: (id) => {
+        doFetch: (id) => {
             fetchEvent(id)(dispatch);
         },
         doSave: (event) => {
