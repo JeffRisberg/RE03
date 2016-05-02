@@ -29,8 +29,8 @@
     "webpack": "^1.12.14"
   },
   "dependencies": {
-    "react": "^0.14.8",
-    "react-dom": "^0.14.8",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
     "react-router": "^2.3.0",
     "redux": "^3.4.0",
     "react-redux": "^4.4.2",
