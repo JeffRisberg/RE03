@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { routerReducer, routerMiddleware } from 'react-router-redux'
+import thunkMiddleware from 'redux-thunk'
 
 import items from './reducers/items';
 import events from './reducers/events';
@@ -26,12 +27,10 @@ const combinedReducers = combineReducers({
     routing: routerReducer
 });
 
-const middleware = routerMiddleware(browserHistory);
-
 const store = createStore(
     combinedReducers,
     initialContent,
-    applyMiddleware(middleware)
+    applyMiddleware(routerMiddleware(browserHistory), thunkMiddleware)
 );
 
 ReactDOM.render(
