@@ -18,7 +18,7 @@ class ItemDetail extends React.Component {
         var item = this.props.items.records[id];
 
         if (item == null)
-            this.props.doFetch(id);
+            this.props.fetchItem(id);
     }
 
     handleSubmit(e) {
@@ -33,7 +33,7 @@ class ItemDetail extends React.Component {
         item.description = description;
         item.value = value;
 
-        this.props.doSave(item);
+        this.props.saveItem(item);
 
         this.context.router.push('/items');
     }
@@ -43,7 +43,7 @@ class ItemDetail extends React.Component {
 
         const item = this.props.items.records[this.props.params.id];
 
-        this.props.doDelete(item, "/items"); // after delete, will go to /items
+        this.props.deleteItem(item, "/items"); // after delete, will go to /items
     }
 
     render() {
@@ -100,20 +100,7 @@ const mapStateToProps = (state) => {
         items: state.items
     };
 };
-const mapDispatchToProps = (dispatch) => {
-    return {
-        doFetch: (id) => {
-            fetchItem(id)(dispatch);
-        },
-        doSave: (item) => {
-            saveItem(item)(dispatch);
-        },
-        doDelete: (item, thenUrl) => {
-            deleteItem(item, thenUrl)(dispatch);
-        }
-    };
-};
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    {fetchItem, saveItem, deleteItem}
 )(ItemDetail);

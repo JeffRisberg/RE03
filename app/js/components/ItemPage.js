@@ -9,7 +9,7 @@ import { queryItems } from '../actions/items';
 class ItemPage extends React.Component {
 
     componentDidMount() {
-        this.props.onMount();
+        this.props.queryItems();
     }
 
     render() {
@@ -26,14 +26,7 @@ const mapStateToProps = (state) => {
     return {
     };
 };
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onMount: () => {
-            queryItems()(dispatch);
-        }
-    };
-};
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    {queryItems}
 )(ItemPage);

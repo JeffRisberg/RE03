@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
 
-import { saveItem } from '../actions/items';
+import { toggleItem } from '../actions/items';
 
 class ItemList extends React.Component {
 
@@ -16,7 +16,7 @@ class ItemList extends React.Component {
                 <tr key={key}>
                     <td><Link to={'/items/detail/'+id} className='btn btn-default'>View</Link></td>
                     <td style={{textDecoration: item.completed ? 'line-through' : 'none'}}
-                        onClick={() => this.props.onClick(item)}>
+                        onClick={() => this.props.toggleItem(item)}>
                         {item.text}
                     </td>
                     <td className="text-right">${item.value}</td>
@@ -50,17 +50,9 @@ const mapStateToProps = (state) => {
         items: state.items
     };
 };
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onClick: (item) => {
-            var newItem = {...item, completed: !item.completed};
-            saveItem(newItem)(dispatch);
-        }
-    };
-};
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    {toggleItem}
 )(ItemList);
 
 

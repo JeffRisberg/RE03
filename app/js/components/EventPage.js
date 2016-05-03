@@ -9,7 +9,7 @@ import AddEvent from './AddEvent';
 class EventPage extends React.Component {
 
     componentDidMount() {
-        this.props.onMount();
+        this.props.queryEvents();
     }
 
     render() {
@@ -25,14 +25,7 @@ class EventPage extends React.Component {
 const mapStateToProps = (state) => {
     return {};
 };
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onMount: () => {
-            queryEvents()(dispatch);
-        }
-    };
-};
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    {queryEvents}
 )(EventPage);

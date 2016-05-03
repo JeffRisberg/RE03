@@ -32,6 +32,13 @@ export const fetchEvent = (id) => {
     };
 };
 
+export const toggleEvent = (event) => {
+    return function (dispatch) {
+        var newEvent = {...event, completed: !event.completed};
+        saveEvent(newEvent)(dispatch);
+    }
+};
+
 export const saveEvent = (event) => {
     return function (dispatch) {
 

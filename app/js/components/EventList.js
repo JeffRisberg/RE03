@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
 
-import { saveEvent } from '../actions/events';
+import { toggleEvent } from '../actions/events';
 
 class EventList extends React.Component {
 
@@ -17,7 +17,7 @@ class EventList extends React.Component {
                     <Link to={'/events/detail/'+id} className='btn btn-default'>View</Link>
                     {' '}
             <span style={{textDecoration: event.completed ? 'line-through' : 'none'}}
-                  onClick={() => this.props.onClick(event)}>
+                  onClick={() => this.props.toggleEvent(event)}>
                 {event.text}
             </span>
                     {' '}
@@ -41,16 +41,8 @@ const mapStateToProps = (state) => {
         events: state.events
     };
 };
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onClick: (event) => {
-            var newEvent = { ...event, completed: !event.completed };
-            saveEvent(newEvent)(dispatch);
-        }
-    };
-};
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    {toggleEvent}
 )(EventList);
 

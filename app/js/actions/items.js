@@ -32,6 +32,13 @@ export const fetchItem = (id) => {
     };
 };
 
+export const toggleItem = (item) => {
+    return function (dispatch) {
+        var newItem = {...item, completed: !item.completed};
+        saveItem(newItem)(dispatch);
+    }
+};
+
 export const saveItem = (item) => {
     return function (dispatch) {
 
@@ -46,9 +53,9 @@ export const saveItem = (item) => {
             .then(response => response.json())
             .then((json) => {
                 dispatch({
-                        type: 'APPEND_ITEMS',
-                        items: json.data
-                    });
+                    type: 'APPEND_ITEMS',
+                    items: json.data
+                });
             });
     };
 };
