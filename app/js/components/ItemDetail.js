@@ -4,13 +4,23 @@ import { connect } from 'react-redux';
 
 import { fetchItem, saveItem, deleteItem } from '../actions/items';
 
+import ItemForm from './ItemForm';
+
 class ItemDetail extends React.Component {
 
     constructor(props, context) {
         super(props, context);
 
+        const item = this.props.items.records[this.props.params.id];
+
+        var formData = (item === null) ? {} : {
+            text: item.text,
+            description: item.description,
+            value: item.value
+        };
+
+        this.state = {formData: formData};
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
@@ -21,29 +31,12 @@ class ItemDetail extends React.Component {
             this.props.fetchItem(id);
     }
 
-    handleSubmit(e) {
+    handleSubmit(e, formData) {
         e.preventDefault();
 
-        const item = this.props.items.records[this.props.params.id];
-        const text = ReactDOM.findDOMNode(this.refs.text).value.trim();
-        const description = ReactDOM.findDOMNode(this.refs.description).value.trim();
-        const value = ReactDOM.findDOMNode(this.refs.value).value.trim();
+        //const ein = this.props.selections['ein'];
 
-        item.text = text;
-        item.description = description;
-        item.value = value;
-
-        this.props.saveItem(item);
-
-        this.context.router.push('/items');
-    }
-
-    handleDelete(e) {
-        e.preventDefault();
-
-        const item = this.props.items.records[this.props.params.id];
-
-        this.props.deleteItem(item, "/items"); // after delete, will go to /items
+        //this.props.addDonation(formData, ein);
     }
 
     render() {
@@ -51,40 +44,8 @@ class ItemDetail extends React.Component {
 
         if (item != null) {
             return (
-                <form onSubmit={this.handleSubmit}>
-                    <table className="itemDetail">
-                        <tbody>
-                        <tr>
-                            <td></td>
-                            <td><h2>Item Detail</h2></td>
-                        </tr>
-                        <tr>
-                            <td>Text:</td>
-                            <td><input type="text" ref="text" size="50" defaultValue={item.text}/></td>
-                        </tr>
-                        <tr>
-                            <td>Description:</td>
-                            <td><input type="text" ref="description" size="100" defaultValue={item.description}/></td>
-                        </tr>
-                        <tr>
-                            <td>Value:</td>
-                            <td><input type="text" ref="value" defaultValue={item.value}/></td>
-                        </tr>
-                        <tr>
-                            <td>Completed:</td>
-                            <td>{item.completed ? "X" : ""}</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><input type="submit" value="Submit" className="btn btn-default"/></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><a onClick={this.handleDelete.bind()} className="btn btn-default">Delete</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </form>
+                <ItemForm item={item} handleSubmit={this.handleSubmit}
+                          formData={this.state.formData}/>
             );
         }
         else

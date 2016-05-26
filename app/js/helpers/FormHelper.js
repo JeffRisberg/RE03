@@ -1,11 +1,5 @@
-/**
- * Form processor support, wrap each component with this.
- *
- * @author various
- * @since May 2016
- */
-class FormHelper {
 
+class FormHelper {
     constructor(name, component, initialFormData) {
         this.name = name;
         this.component = component;
@@ -14,7 +8,7 @@ class FormHelper {
 
     componentDidMount(callback) {
         this.component.setState( {
-            formData: this.initialFormData
+            [this.name]: this.initialFormData
         }, () => {
             if (callback && callback != null) callback();
         })
@@ -24,21 +18,19 @@ class FormHelper {
         const fieldName = e.target.name;
         const value = (e.target.type === 'checkbox') ? e.target.checked : (e.target.value != null) ? e.target.value.trim() : null;
 
-        console.log("changing " + fieldName + " to " + value);
-
-        const newFormData = Object.assign({}, this.component.state.formData, {[fieldName]: value})
-        this.component.setState({formData: newFormData}, () => {
-            console.log(JSON.stringify(this.component.state.formData, null, 2));
+        const newFormData = Object.assign({}, this.component.state[this.name], {[fieldName]: value})
+        this.component.setState({[this.name]: newFormData}, () => {
+            console.log(JSON.stringify(this.component.state[this.name], null, 2));
             if (callback && callback != null) callback();
         });
     }
 
     getValue(fieldName) {
-        return this.component.state.formData[fieldName];
+        return (this.component.state[this.name]) ? this.component.state[this.name][fieldName] : null;
     }
 
     getFormData() {
-        return this.component.state.formData;
+        return this.component.state[this.name];
     }
 }
 
