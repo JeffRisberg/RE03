@@ -8,6 +8,7 @@ import thunkMiddleware from 'redux-thunk'
 
 import items from './reducers/items';
 import events from './reducers/events';
+import forms from './reducers/forms';
 
 import AppRoot from './components/AppRoot';
 import Home from './components/Home';
@@ -18,12 +19,14 @@ import EventDetail from './components/EventDetail';
 
 var initialContent = {
     items: {idList: [], records: {}},
-    events: {idList: [], records: {}}
+    events: {idList: [], records: {}},
+    forms: {}
 };
 
 const combinedReducers = combineReducers({
     items,
     events,
+    forms,
     routing: routerReducer
 });
 

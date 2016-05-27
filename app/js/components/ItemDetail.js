@@ -11,21 +11,12 @@ class ItemDetail extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        const item = this.props.items.records[this.props.params.id];
-
-        var formData = (item === null) ? {} : {
-            text: item.text,
-            description: item.description,
-            value: item.value
-        };
-
-        this.state = {formData: formData};
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
-        var id = this.props.params.id;
-        var item = this.props.items.records[id];
+        const id = this.props.params.id;
+        const item = this.props.items.records[id];
 
         if (item == null)
             this.props.fetchItem(id);
@@ -40,12 +31,18 @@ class ItemDetail extends React.Component {
     }
 
     render() {
+        console.log("itemDetail render");
         const item = this.props.items.records[this.props.params.id];
 
         if (item != null) {
+
             return (
                 <ItemForm item={item} handleSubmit={this.handleSubmit}
-                          formData={this.state.formData}/>
+                          formData={{
+                          text: "abc",
+                          description: "def",
+                          value: null
+                          }}/>
             );
         }
         else

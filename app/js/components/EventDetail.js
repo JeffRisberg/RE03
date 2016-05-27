@@ -10,23 +10,14 @@ class EventDetail extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        const event = this.props.events.records[this.props.params.id];
-
-        var formData = (event === null) ? {} : {
-            text: event.text,
-            description: event.description,
-            time: event.time
-        };
-
-        this.state = {formData: formData};
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
-        var id = this.props.params.id;
-        var item = this.props.events.records[id];
+        const id = this.props.params.id;
+        const event = this.props.events.records[id];
 
-        if (item == null)
+        if (event == null)
             this.props.fetchEvent(id);
     }
 
@@ -44,7 +35,11 @@ class EventDetail extends React.Component {
         if (event != null) {
             return (
                 <EventForm event={event} handleSubmit={this.handleSubmit}
-                           formData={this.state.formData}/>
+                           formData={{
+                           text: event.text,
+                           description: event.description,
+                           time: event.times
+                           }}/>
             );
         }
         else
