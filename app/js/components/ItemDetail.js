@@ -12,6 +12,7 @@ class ItemDetail extends React.Component {
         super(props, context);
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
@@ -25,23 +26,38 @@ class ItemDetail extends React.Component {
     handleSubmit(e, formData) {
         e.preventDefault();
 
-        //const ein = this.props.selections['ein'];
+        const item = this.props.items.records[this.props.params.id];
 
-        //this.props.addDonation(formData, ein);
+        item.text = formData.text;
+        item.description = formData.description;
+        item.value = formData.value;
+
+        this.props.saveItem(item);
+
+        this.context.router.push('/items');
+    }
+
+    handleDelete(e, formData) {
+        e.preventDefault();
+
+        const item = this.props.items.records[this.props.params.id];
+
+        this.props.deleteItem(item, '/items'); // this will go to /items after delete
     }
 
     render() {
-        console.log("itemDetail render");
         const item = this.props.items.records[this.props.params.id];
 
         if (item != null) {
 
             return (
-                <ItemForm item={item} handleSubmit={this.handleSubmit}
+                <ItemForm item={item}
+                          handleSubmit={this.handleSubmit}
+                          handleDelete={this.handleDelete}
                           formData={{
-                          text: "abc",
-                          description: "def",
-                          value: null
+                          text: item.text,
+                          description: item.description,
+                          value: item.value
                           }}/>
             );
         }

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import { setForm, handleFormFieldChange, clearForm } from '../actions/forms';
 
+const formName = 'itemForm';
+
 /**
  * Item Editing Form
  *
@@ -13,24 +15,20 @@ import { setForm, handleFormFieldChange, clearForm } from '../actions/forms';
 class ItemForm extends React.Component {
     constructor(props) {
         super(props);
-
-        this.formName = 'itemForm';
     }
 
     componentDidMount() {
-        this.props.setForm(this.formName, this.props.formData)
+        this.props.setForm(formName, this.props.formData)
     }
 
     componentWillUnmount() {
-        this.props.clearForm(this.formName)
+        this.props.clearForm(formName)
     }
 
     render() {
-        console.log("itemForm render");
         const item = this.props.item;
 
         if (this.props.form != null && this.props.form !== undefined && item !== null && item !== undefined) {
-            console.log("new text " + this.props.form.text);
 
             return (
                 <div>
@@ -39,26 +37,31 @@ class ItemForm extends React.Component {
                         <p>Text:</p>
 
                         <p>
-                            <input type="text" name="text" size="40" value={this.props.form.text}
-                                   onChange={(e) => {this.props.handleFormFieldChange(this.formName, e)}}/>
+                            <input type="text" name="text" size="40" defaultValue={this.props.form.text}
+                                   onChange={(e) => {this.props.handleFormFieldChange(formName, e)}}/>
                         </p>
 
                         <p>Description:</p>
 
                         <p>
-                            <input type="text" name="description" size="40" value={this.props.form.description}
-                                   onChange={(e) => {this.props.handleFormFieldChange(this.formName, e)}}/>
+                            <input type="text" name="description" size="40" defaultValue={this.props.form.description}
+                                   onChange={(e) => {this.props.handleFormFieldChange(formName, e)}}/>
                         </p>
 
                         <p>Value:</p>
 
                         <p>
-                            <input type="text" name="value" size="20" value={this.props.form.value}
-                                   onChange={(e) => {this.props.handleFormFieldChange(this.formName, e)}}/>
+                            <input type="text" name="value" size="20" defaultValue={this.props.form.value}
+                                   onChange={(e) => {this.props.handleFormFieldChange(formName, e)}}/>
                         </p>
 
                         <div>
                             <input type="submit" value="Submit" className="btn btn-default"/>
+                        </div>
+                        <div>
+                            <a onClick={(e) => this.props.handleDelete(e, this.props.form)} className="btn btn-default">
+                                Delete
+                            </a>
                         </div>
                     </form>
                 </div>
@@ -72,7 +75,7 @@ class ItemForm extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        form: state.forms['itemForm']
+        form: state.forms[formName]
     };
 };
 export default connect(

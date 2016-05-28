@@ -11,6 +11,7 @@ class EventDetail extends React.Component {
         super(props, context);
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
@@ -24,9 +25,23 @@ class EventDetail extends React.Component {
     handleSubmit(e, formData) {
         e.preventDefault();
 
-        //const ein = this.props.selections['ein'];
+        const event = this.props.events.records[this.props.params.id];
 
-        //this.props.addDonation(formData, ein);
+        event.text = formData.text;
+        event.description = formData.description;
+        event.time = formData.time;
+
+        this.props.saveEvent(event);
+
+        this.context.router.push('/events');
+    }
+
+    handleDelete(e, formData) {
+        e.preventDefault();
+
+        const event = this.props.events.records[this.props.params.id];
+
+        this.props.deleteEvent(event, '/events'); // this will go to /events after delete
     }
 
     render() {
@@ -34,11 +49,13 @@ class EventDetail extends React.Component {
 
         if (event != null) {
             return (
-                <EventForm event={event} handleSubmit={this.handleSubmit}
+                <EventForm event={event}
+                           handleSubmit={this.handleSubmit}
+                           handleDelete={this.handleDelete}
                            formData={{
                            text: event.text,
                            description: event.description,
-                           time: event.times
+                           time: event.time
                            }}/>
             );
         }
