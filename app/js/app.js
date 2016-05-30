@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { routerReducer, routerMiddleware } from 'react-router-redux'
@@ -33,12 +33,12 @@ const combinedReducers = combineReducers({
 const store = createStore(
     combinedReducers,
     initialContent,
-    applyMiddleware(routerMiddleware(browserHistory), thunkMiddleware)
+    applyMiddleware(routerMiddleware(hashHistory), thunkMiddleware)
 );
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={browserHistory}>
+        <Router history={hashHistory}>
             <Route path="/" component={AppRoot}>
                 <IndexRoute component={Home}/>
                 <Route path="items">
