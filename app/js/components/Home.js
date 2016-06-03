@@ -5,7 +5,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={this.props.className}>
                 <h2>RE03 Example</h2>
 
                 <div className="row">
