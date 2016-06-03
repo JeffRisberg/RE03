@@ -27,13 +27,19 @@ describe('We can render an ItemList component', () => {
         });
 
         const initialContent = {
-            items: {idList: [], records: {}}
+            items: {idList: [], records: {}},
+            events: {idList: [], records: {}}
         };
 
         const store = createStore(
             combinedReducers,
             initialContent
         );
+
+        store.dispatch({
+            type: "APPEND_ITEMS",
+            items: [{text: "Lassie", description: "Big dog", value: 67}]
+        });
 
         const itemList =
             TestUtils.renderIntoDocument(
@@ -46,6 +52,9 @@ describe('We can render an ItemList component', () => {
 
         const itemListNode = ReactDOM.findDOMNode(itemList);
 
-        expect(itemListNode.textContent).toContain('Value');
+        expect(itemListNode.textContent).toContain('Value'); // in table header
+
+        expect(itemListNode.textContent).toContain('Lassie'); // in item text
+        expect(itemListNode.textContent).toContain('Big dog'); // in item description
     });
 });
