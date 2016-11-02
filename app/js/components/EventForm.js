@@ -41,13 +41,6 @@ class EventForm extends React.Component {
                                    onChange={(e) => {this.props.handleFormFieldChange(formName, e) }}/>
                         </p>
 
-                        <p>Description:</p>
-
-                        <p>
-                            <input type="text" name="description" size="40" defaultValue={this.props.form.description}
-                                   onChange={(e) => {this.props.handleFormFieldChange(formName, e)}}/>
-                        </p>
-
                         <p>Time:</p>
 
                         <p>

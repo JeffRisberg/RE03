@@ -41,17 +41,17 @@ class ItemForm extends React.Component {
                                    onChange={(e) => {this.props.handleFormFieldChange(formName, e)}}/>
                         </p>
 
-                        <p>Description:</p>
-
-                        <p>
-                            <input type="text" name="description" size="40" defaultValue={this.props.form.description}
-                                   onChange={(e) => {this.props.handleFormFieldChange(formName, e)}}/>
-                        </p>
-
                         <p>Value:</p>
 
                         <p>
                             <input type="text" name="value" size="20" defaultValue={this.props.form.value}
+                                   onChange={(e) => {this.props.handleFormFieldChange(formName, e)}}/>
+                        </p>
+
+                        <p>Description:</p>
+
+                        <p>
+                            <input type="text" name="description" size="40" defaultValue={this.props.form.description}
                                    onChange={(e) => {this.props.handleFormFieldChange(formName, e)}}/>
                         </p>
 
