@@ -3,6 +3,7 @@
 Technologies used:
 
 - React
+- Redux
 - ES6
 - Webpack
 - Babel
