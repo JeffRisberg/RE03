@@ -7,12 +7,6 @@ import { fetchEvent, saveEvent, deleteEvent } from '../actions/events';
 import EventForm from './EventForm';
 
 class EventDetail extends React.Component {
-    constructor(props, context) {
-        super(props, context);
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
-    }
 
     componentDidMount() {
         const id = this.props.params.id;
@@ -22,7 +16,7 @@ class EventDetail extends React.Component {
             this.props.fetchEvent(id);
     }
 
-    handleSubmit(e, formData) {
+    handleSubmit = (e, formData) => {
         e.preventDefault();
 
         const event = this.props.events.records[this.props.params.id];
@@ -36,7 +30,7 @@ class EventDetail extends React.Component {
         this.context.router.push('/events');
     }
 
-    handleDelete(e, formData) {
+    handleDelete = (e, formData) => {
         e.preventDefault();
 
         const event = this.props.events.records[this.props.params.id];

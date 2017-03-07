@@ -8,13 +8,6 @@ import ItemForm from './ItemForm';
 
 class ItemDetail extends React.Component {
 
-    constructor(props, context) {
-        super(props, context);
-
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
-    }
-
     componentDidMount() {
         const id = this.props.params.id;
         const item = this.props.items.records[id];
@@ -23,7 +16,7 @@ class ItemDetail extends React.Component {
             this.props.fetchItem(id);
     }
 
-    handleSubmit(e, formData) {
+    handleSubmit = (e, formData) => {
         e.preventDefault();
 
         const item = this.props.items.records[this.props.params.id];
@@ -37,7 +30,7 @@ class ItemDetail extends React.Component {
         this.context.router.push('/items');
     }
 
-    handleDelete(e, formData) {
+    handleDelete = (e, formData) => {
         e.preventDefault();
 
         const item = this.props.items.records[this.props.params.id];
