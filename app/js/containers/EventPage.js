@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import { queryEvents } from '../actions/events';
 
-import EventList from './EventList';
-import AddEvent from './AddEvent';
+import EventList from '../components/EventList';
+import AddEvent from '../components/AddEvent';
 
 class EventPage extends React.Component {
 

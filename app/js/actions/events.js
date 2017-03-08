@@ -2,6 +2,8 @@ import fetch from 'isomorphic-fetch';
 
 import { push } from 'react-router-redux'
 
+import { types } from '../types'
+
 export const queryEvents = () => {
     return function (dispatch) {
 
@@ -10,7 +12,7 @@ export const queryEvents = () => {
             .then((json) => {
                 dispatch(
                     {
-                        type: 'RESET_EVENTS',
+                        type: types.RESET_EVENTS,
                         events: json.data
                     });
             });
@@ -25,7 +27,7 @@ export const fetchEvent = (id) => {
             .then((json) => {
                 dispatch(
                     {
-                        type: 'APPEND_EVENTS',
+                        type: type.APPEND_EVENTS,
                         events: json.data
                     });
             });
@@ -53,7 +55,7 @@ export const saveEvent = (event) => {
             .then(response => response.json())
             .then((json) => {
                 dispatch({
-                    type: 'APPEND_EVENTS',
+                    type: type.APPEND_EVENTS,
                     events: json.data
                 });
             });
@@ -74,7 +76,7 @@ export const addEvent = (event) => {
             .then(response => response.json())
             .then((json) => {
                 dispatch({
-                    type: 'APPEND_EVENTS',
+                    type: type.APPEND_EVENTS,
                     events: json.data
                 });
             });

@@ -1,6 +1,8 @@
+import { types } from '../types'
+
 const items = (state = [], action = {}) => {
     switch (action.type) {
-        case 'RESET_ITEMS': // clear prior items
+        case types.RESET_ITEMS: // clear prior items
         {
             const idList = [];
             const records = {};
@@ -12,7 +14,7 @@ const items = (state = [], action = {}) => {
 
             return {idList, records};
         }
-        case 'APPEND_ITEMS':
+        case types.APPEND_ITEMS:
         {
             const idList = state.idList;
             const records = state.records;

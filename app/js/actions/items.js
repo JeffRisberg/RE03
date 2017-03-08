@@ -2,6 +2,8 @@ import fetch from 'isomorphic-fetch';
 
 import { push } from 'react-router-redux'
 
+import { types } from '../types'
+
 export const queryItems = () => {
     return function (dispatch) {
 
@@ -10,7 +12,7 @@ export const queryItems = () => {
             .then((json) => {
                 dispatch(
                     {
-                        type: 'RESET_ITEMS',
+                        type: types.RESET_ITEMS,
                         items: json.data
                     }
                 );
@@ -25,7 +27,7 @@ export const fetchItem = (id) => {
             .then(response => response.json())
             .then((json) => {
                 dispatch({
-                    type: 'APPEND_ITEMS',
+                    type: types.APPEND_ITEMS,
                     items: json.data
                 })
             });
@@ -53,7 +55,7 @@ export const saveItem = (item) => {
             .then(response => response.json())
             .then((json) => {
                 dispatch({
-                    type: 'APPEND_ITEMS',
+                    type: types.APPEND_ITEMS,
                     items: json.data
                 });
             });
@@ -74,7 +76,7 @@ export const addItem = (item) => {
             .then(response => response.json())
             .then((json) => {
                 dispatch({
-                    type: 'APPEND_ITEMS',
+                    type: types.APPEND_ITEMS,
                     items: json.data
                 })
             });

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import NavLink from './NavLink'
+import NavLink from '../components/NavLink'
 
 class AppRoot extends React.Component {
 
