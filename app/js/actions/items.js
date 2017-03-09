@@ -34,7 +34,7 @@ export const fetchItem = (id) => {
 
 export const toggleItem = (item) => {
     return function (dispatch) {
-        var newItem = {...item, completed: !item.completed};
+        let newItem = {...item, completed: !item.completed};
         saveItem(newItem)(dispatch);
     }
 };
