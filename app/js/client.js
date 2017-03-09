@@ -10,12 +10,6 @@ import events from "./reducers/events";
 import forms from "./reducers/forms";
 import routes from "./routes";
 
-var initialContent = {
-    items: {idList: [], records: {}},
-    events: {idList: [], records: {}},
-    forms: {}
-};
-
 const combinedReducers = combineReducers({
     items,
     events,
@@ -25,7 +19,7 @@ const combinedReducers = combineReducers({
 
 const store = createStore(
     combinedReducers,
-    initialContent,
+    {},
     applyMiddleware(routerMiddleware(hashHistory), thunkMiddleware)
 );
 

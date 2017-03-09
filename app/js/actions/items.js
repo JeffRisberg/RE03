@@ -1,8 +1,6 @@
-import fetch from 'isomorphic-fetch';
-
-import { push } from 'react-router-redux'
-
-import { types } from '../types'
+import fetch from "isomorphic-fetch";
+import {push} from "react-router-redux";
+import {types} from "../types";
 
 export const queryItems = () => {
     return function (dispatch) {

@@ -1,36 +1,30 @@
-import { types } from '../types'
+import {handleActions} from "redux-actions";
+import {types} from "../types";
 
-const events = (state = [], action = {}) => {
-    switch (action.type) {
-        case types.RESET_EVENTS: // clear prior events
-        {
-            const idList = [];
-            const records = {};
+export default handleActions({
+    [types.RESET_EVENTS]: (state, action) => {
+        const idList = [];
+        const records = {};
 
-            action.events.forEach(record => {
-                records[record.id] = record;
-                idList.push(record.id);
-            });
+        action.events.forEach(record => {
+            records[record.id] = record;
+            idList.push(record.id);
+        });
 
-            return {idList, records};
-        }
-        case types.APPEND_EVENTS:
-        {
-            const idList = state.idList;
-            const records = state.records;
+        return {idList, records};
+    },
 
-            action.events.forEach(record => {
-                const id = record.id;
+    [types.APPEND_EVENTS]: (state, action) => {
+        const idList = state.idList;
+        const records = state.records;
 
-                if (idList.indexOf(id) < 0) idList.push(id);
-                records[id] = record;
-            });
+        action.events.forEach(record => {
+            const id = record.id;
 
-            return {idList, records};
-        }
-        default:
-            return state;
+            if (idList.indexOf(id) < 0) idList.push(id);
+            records[id] = record;
+        });
+
+        return {idList, records};
     }
-};
-
-export default events;
+}, {idList: [], records: {}});
