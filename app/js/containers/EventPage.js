@@ -15,14 +15,14 @@ class EventPage extends React.Component {
     render() {
         return (
             <div className="eventPage">
-                <AddEvent/>
-                <EventList/>
+                <AddEvent />
+                <EventList />
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
     return {};
 };
 export default connect(

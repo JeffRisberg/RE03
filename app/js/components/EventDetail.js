@@ -1,10 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
-
-import { fetchEvent, saveEvent, deleteEvent } from '../actions/events';
-
-import EventForm from './EventForm';
+import React from "react";
+import {connect} from "react-redux";
+import {fetchEvent, saveEvent, deleteEvent} from "../actions/events";
+import EventForm from "./EventForm";
 
 class EventDetail extends React.Component {
 
@@ -30,7 +27,7 @@ class EventDetail extends React.Component {
         this.context.router.push('/events');
     }
 
-    handleDelete = (e, formData) => {
+    handleDelete = (e) => {
         e.preventDefault();
 
         const event = this.props.events.records[this.props.params.id];
@@ -47,9 +44,9 @@ class EventDetail extends React.Component {
                            handleSubmit={this.handleSubmit}
                            handleDelete={this.handleDelete}
                            formData={{
-                           text: event.text,
-                           description: event.description,
-                           time: event.time
+                               text: event.text,
+                               description: event.description,
+                               time: event.time
                            }}/>
             );
         }

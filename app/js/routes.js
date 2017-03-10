@@ -1,5 +1,3 @@
-import React from "react";
-import {Router, Route, IndexRoute, hashHistory} from "react-router";
 import AppRoot from "./containers/AppRoot";
 import Home from "./components/Home";
 import ItemPage from "./containers/ItemPage";

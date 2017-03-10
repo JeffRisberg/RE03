@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
 import { setForm, handleFormFieldChange, clearForm } from '../actions/forms';
@@ -66,7 +65,7 @@ class EventForm extends React.Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
         form: state.forms[formName]
     };

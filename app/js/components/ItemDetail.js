@@ -1,10 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
-
-import { fetchItem, saveItem, deleteItem } from '../actions/items';
-
-import ItemForm from './ItemForm';
+import React from "react";
+import {connect} from "react-redux";
+import {fetchItem, saveItem, deleteItem} from "../actions/items";
+import ItemForm from "./ItemForm";
 
 class ItemDetail extends React.Component {
 
@@ -30,7 +27,7 @@ class ItemDetail extends React.Component {
         this.context.router.push('/items');
     }
 
-    handleDelete = (e, formData) => {
+    handleDelete = (e) => {
         e.preventDefault();
 
         const item = this.props.items.records[this.props.params.id];
@@ -48,9 +45,9 @@ class ItemDetail extends React.Component {
                           handleSubmit={this.handleSubmit}
                           handleDelete={this.handleDelete}
                           formData={{
-                          text: item.text,
-                          description: item.description,
-                          value: item.value
+                              text: item.text,
+                              description: item.description,
+                              value: item.value
                           }}/>
             );
         }

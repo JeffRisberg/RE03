@@ -15,14 +15,14 @@ class ItemPage extends React.Component {
     render() {
         return (
             <div className="itemPage">
-                <AddItem/>
-                <ItemList/>
+                <AddItem />
+                <ItemList />
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = () => {
     return {
     };
 };
