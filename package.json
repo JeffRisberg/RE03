@@ -8,7 +8,11 @@
     "postinstall": "webpack",
     "webpack": "webpack",
     "webpack-watch": "webpack --watch --colors",
-    "test": "jest"
+    "test": "jest",
+    "lint": "npm run eslint && npm run stylelint",
+    "eslint": "jg-scripts eslint",
+    "stylelint": "jg-scripts stylelint",
+    "prepush": "npm run lint && npm run test"
   },
   "jest": {
     "scriptPreprocessor": "node_modules/babel-jest",
@@ -41,6 +45,8 @@
     "express": "^4.15.2",
     "file-loader": "^0.10.1",
     "glob": "^7.1.1",
+    "husky": "^0.13.1",
+    "jest": "^18.1.0",
     "nedb": "^1.8.0",
     "react-addons-test-utils": "^15.4.2",
     "react-hot-loader": "^1.3.1",
