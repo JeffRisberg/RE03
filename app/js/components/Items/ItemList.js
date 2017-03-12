@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-import { toggleItem } from '../actions/items';
+import { toggleItem } from '../../actions/items';
+import "./Items.scss";
 
 class ItemList extends React.Component {
 
@@ -25,7 +25,7 @@ class ItemList extends React.Component {
         });
 
         return (
-            <div className="itemList">
+            <div className="items__list">
                 <table className="table">
                     <thead>
                     <tr>

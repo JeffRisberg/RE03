@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
-
-import { setForm, handleFormFieldChange, clearForm } from '../actions/forms';
+import { setForm, handleFormFieldChange, clearForm } from '../../actions/forms';
+import "./Events.scss";
 
 const formName = 'eventForm';
 
@@ -31,7 +31,8 @@ class EventForm extends React.Component {
 
             return (
                 <div>
-                    <form onSubmit={(e) => {this.props.handleSubmit(e, this.props.form)}}>
+                    <form className="events"
+                          onSubmit={(e) => {this.props.handleSubmit(e, this.props.form)}}>
 
                         <p>Text:</p>
 

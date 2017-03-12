@@ -1,0 +1,16 @@
+@import "../../../styles/app.scss";
+
+.events {
+
+  &__event {
+    color: white;
+    background-color: #333;
+    padding: 10px;
+  }
+
+  &___list {
+    background-color: #eee;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+}

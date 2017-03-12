@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import ItemList from '../components/ItemList';
+import ItemList from '../components/Items/ItemList';
 import AddItem from '../components/AddItem';
 
 import { queryItems } from '../actions/items';

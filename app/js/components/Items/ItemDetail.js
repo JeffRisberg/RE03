@@ -1,7 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-import {fetchItem, saveItem, deleteItem} from "../actions/items";
+import {fetchItem, saveItem, deleteItem} from "../../actions/items";
 import ItemForm from "./ItemForm";
+import "./Items.scss";
 
 class ItemDetail extends React.Component {
 

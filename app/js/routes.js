@@ -1,9 +1,9 @@
 import AppRoot from "./containers/AppRoot";
 import Home from "./components/Home";
 import ItemPage from "./containers/ItemPage";
-import ItemDetail from "./components/ItemDetail";
+import ItemDetail from "./components/Items/ItemDetail";
 import EventPage from "./containers/EventPage";
-import EventDetail from "./components/EventDetail";
+import EventDetail from "./components/Events/EventDetail";
 
 export default (
     <Route path="/" component={AppRoot}>

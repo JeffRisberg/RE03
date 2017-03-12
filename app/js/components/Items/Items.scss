@@ -1,0 +1,15 @@
+@import "../../../styles/app.scss";
+
+.items {
+
+  &__item {
+    background-color: #fff;
+    padding: 10px;
+  }
+
+  &__itemList {
+    background-color: #ddd;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+}

@@ -1,7 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-import {fetchEvent, saveEvent, deleteEvent} from "../actions/events";
+import {fetchEvent, saveEvent, deleteEvent} from "../../actions/events";
 import EventForm from "./EventForm";
+import "./Events.scss";
 
 class EventDetail extends React.Component {
 

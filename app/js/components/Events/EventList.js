@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
-
-import { toggleEvent } from '../actions/events';
+import { toggleEvent } from '../../actions/events';
+import "./Events.scss";
 
 class EventList extends React.Component {
 
@@ -27,7 +27,7 @@ class EventList extends React.Component {
         });
 
         return (
-            <div className="eventList">
+            <div className="events__list">
                 <div>
                     {eventNodes}
                 </div>
