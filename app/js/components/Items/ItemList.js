@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router'
 import { connect } from 'react-redux';
 import { toggleItem } from '../../actions/items';
 import "./Items.scss";

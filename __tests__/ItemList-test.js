@@ -1,7 +1,7 @@
 jest
     .unmock('redux')
     .unmock('react-redux')
-    .unmock('../app/js/components/ItemList')
+    .unmock('../app/js/components/Items/ItemList')
     .unmock('../app/js/reducers/items')
     .unmock('../app/js/reducers/events')
 ;

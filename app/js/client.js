@@ -1,6 +1,8 @@
+import React from "react";
 import ReactDOM from "react-dom";
-import {hashHistory} from "react-router";
+import {Router, hashHistory} from "react-router";
 import {createStore, combineReducers, applyMiddleware} from "redux";
+import {Provider} from "react-redux";
 import {routerReducer, routerMiddleware} from "react-router-redux";
 import thunkMiddleware from "redux-thunk";
 import items from "./reducers/items";
