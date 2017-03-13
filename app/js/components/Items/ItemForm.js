@@ -30,9 +30,8 @@ class ItemForm extends React.Component {
         if (this.props.form != null && this.props.form !== undefined && item !== null && item !== undefined) {
 
             return (
-                <div>
-                    <form className="items"
-                          onSubmit={(e) => {this.props.handleSubmit(e, this.props.form)}}>
+                <div className={this.props.className}>
+                    <form onSubmit={(e) => {this.props.handleSubmit(e, this.props.form)}}>
 
                         <p>Text:</p>
 

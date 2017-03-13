@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
 import { toggleEvent } from '../../actions/events';
-import "./Events.scss";
+import './Events.scss';
 
 class EventList extends React.Component {
 
@@ -13,7 +13,7 @@ class EventList extends React.Component {
             const id = event.id;
 
             return (
-                <div key={key} className="event">
+                <div key={key} className="events__event">
                     <Link to={'/events/detail/'+id} className='btn btn-default'>View</Link>
                     {' '}
             <span style={{textDecoration: event.completed ? 'line-through' : 'none'}}

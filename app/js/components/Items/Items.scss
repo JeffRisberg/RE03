@@ -7,9 +7,21 @@
     padding: 10px;
   }
 
-  &__itemList {
+  &__list {
     background-color: #ddd;
     padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  &__list thead {
+    background-color: #ee9415;
+  }
+
+  &__detail {
+    background-color: #eecf80;
+    padding: 5px;
+    margin-top: 10px;
     margin-bottom: 5px;
   }
 }

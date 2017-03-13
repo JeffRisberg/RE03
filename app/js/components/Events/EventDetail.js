@@ -41,7 +41,7 @@ class EventDetail extends React.Component {
 
         if (event != null) {
             return (
-                <EventForm event={event}
+                <EventForm event={event} className="events__detail"
                            handleSubmit={this.handleSubmit}
                            handleDelete={this.handleDelete}
                            formData={{

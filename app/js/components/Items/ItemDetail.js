@@ -42,7 +42,7 @@ class ItemDetail extends React.Component {
         if (item != null) {
 
             return (
-                <ItemForm item={item}
+                <ItemForm item={item} className="items__detail"
                           handleSubmit={this.handleSubmit}
                           handleDelete={this.handleDelete}
                           formData={{

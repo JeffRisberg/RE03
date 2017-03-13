@@ -4,13 +4,20 @@
 
   &__event {
     color: white;
-    background-color: #333;
+    background-color: #124592;
     padding: 10px;
   }
 
-  &___list {
-    background-color: #eee;
+  &__list {
     padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  &__detail {
+    background-color: #ddefff;
+    padding: 5px;
+    margin-top: 10px;
     margin-bottom: 5px;
   }
 }

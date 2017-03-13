@@ -30,9 +30,8 @@ class EventForm extends React.Component {
         if (this.props.form != null && this.props.form !== undefined && event !== null && event !== undefined) {
 
             return (
-                <div>
-                    <form className="events"
-                          onSubmit={(e) => {this.props.handleSubmit(e, this.props.form)}}>
+                <div className={this.props.className}>
+                    <form onSubmit={(e) => {this.props.handleSubmit(e, this.props.form)}}>
 
                         <p>Text:</p>
 
