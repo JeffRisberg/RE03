@@ -13,7 +13,9 @@ import TestUtils from 'react-addons-test-utils';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
-import ItemList from '../app/js/components/ItemList';
+import { types } from '../app/js/types'
+
+import ItemList from '../app/js/components/Items/ItemList';
 
 import items from '../app/js/reducers/items';
 import events from '../app/js/reducers/events';
@@ -37,7 +39,7 @@ describe('We can render an ItemList component', () => {
         );
 
         store.dispatch({
-            type: "APPEND_ITEMS",
+            type: types.APPEND_ITEMS,
             items: [{text: "Lassie", description: "Big dog", value: 67}]
         });
 
