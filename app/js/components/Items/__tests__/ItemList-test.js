@@ -1,9 +1,9 @@
 jest
     .unmock('redux')
     .unmock('react-redux')
-    .unmock('../app/js/components/Items/ItemList')
-    .unmock('../app/js/reducers/items')
-    .unmock('../app/js/reducers/events')
+    .unmock('../ItemList')
+    .unmock('../../../../js/reducers/items')
+    .unmock('../../../../js/reducers/events')
 ;
 
 import React from 'react';
@@ -13,12 +13,12 @@ import TestUtils from 'react-addons-test-utils';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
-import { types } from '../app/js/types'
+import { types } from '../../../../js/types'
 
-import ItemList from '../app/js/components/Items/ItemList';
+import ItemList from '../../../../js/components/Items/ItemList';
 
-import items from '../app/js/reducers/items';
-import events from '../app/js/reducers/events';
+import items from '../../../../js/reducers/items';
+import events from '../../../../js/reducers/events';
 
 describe('We can render an ItemList component', () => {
     it('contains content', () => {

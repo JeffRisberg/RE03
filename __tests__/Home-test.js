@@ -4,11 +4,19 @@ jest
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import renderer from 'react-test-renderer';
 import TestUtils from 'react-addons-test-utils';
 
 import Home from '../app/js/components/Home';
 
-describe('We can render an Home component', () => {
+describe('We can render a Home component', () => {
+    it('renders correctly', () => {
+        const content = 'content';
+        const component = renderer.create(<Home>{content}</Home>);
+        const tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
     it('contains content', () => {
         const home =
             TestUtils.renderIntoDocument(
