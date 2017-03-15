@@ -1,12 +1,17 @@
-module.exports = function (app) {
-    var express = require('express');
-    var itemsRouter = express.Router();
+const express = require('express');
 
-    // Use the body-parser library in this service
-    var bodyParser = require('body-parser');
+const itemsRouter = express.Router();
+
+const bodyParser = require('body-parser');
+
+module.exports = (app) => {
+    app.use(bodyParser.urlencoded({
+        extended: true,
+    }));
+
     itemsRouter.use(bodyParser.json());
 
-    var itemsDB = app.itemsDB;
+    const itemsDB = app.itemsDB;
 
     itemsRouter.get('/', function (req, res) {
         delete req.query["_"];

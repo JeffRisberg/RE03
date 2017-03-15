@@ -1,12 +1,17 @@
-module.exports = function (app) {
-    var express = require('express');
-    var eventsRouter = express.Router();
+const express = require('express');
 
-    // Use the body-parser library in this service
-    var bodyParser = require('body-parser');
+const eventsRouter = express.Router();
+
+const bodyParser = require('body-parser');
+
+module.exports = (app) => {
+    app.use(bodyParser.urlencoded({
+        extended: true,
+    }));
+
     eventsRouter.use(bodyParser.json());
 
-    var eventsDB = app.eventsDB;
+    const eventsDB = app.eventsDB;
 
     eventsRouter.get('/', function (req, res) {
         delete req.query["_"];
