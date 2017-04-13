@@ -7,9 +7,10 @@ export default handleActions({
         return newState;
     },
 
-    [types.SET_FORM_FIELD]: (state) => {
+    [types.SET_FORM_FIELD]: (state, action) => {
         const newState = Object.assign({}, state);
 
+        Object.assign(newState[action.formName], {[action.fieldName]: action.fieldValue});
         return newState;
     },
 
