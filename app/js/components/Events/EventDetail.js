@@ -14,14 +14,14 @@ class EventDetail extends React.Component {
             this.props.fetchEvent(id);
     }
 
-    handleSubmit = (e, formData) => {
+    handleSubmit = (values) => {
         e.preventDefault();
 
         const event = this.props.events.records[this.props.params.id];
 
-        event.text = formData.text;
-        event.description = formData.description;
-        event.time = formData.time;
+        event.text = values.text;
+        event.description = values.description;
+        event.time = values.time;
 
         this.props.saveEvent(event);
 
@@ -42,9 +42,9 @@ class EventDetail extends React.Component {
         if (event != null) {
             return (
                 <EventForm event={event} className="events__detail"
-                           handleSubmit={this.handleSubmit}
-                           handleDelete={this.handleDelete}
-                           formData={{
+                           onSubmit={this.handleSubmit}
+                           onDelete={this.handleDelete}
+                           initialValues={{
                                text: event.text,
                                description: event.description,
                                time: event.time

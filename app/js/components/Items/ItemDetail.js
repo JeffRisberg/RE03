@@ -14,14 +14,12 @@ class ItemDetail extends React.Component {
             this.props.fetchItem(id);
     }
 
-    handleSubmit = (e, formData) => {
-        e.preventDefault();
-
+    handleSubmit = (values) => {
         const item = this.props.items.records[this.props.params.id];
 
-        item.text = formData.text;
-        item.description = formData.description;
-        item.value = formData.value;
+        item.text = values.text;
+        item.description = values.description;
+        item.value = values.value;
 
         this.props.saveItem(item);
 
@@ -43,9 +41,9 @@ class ItemDetail extends React.Component {
 
             return (
                 <ItemForm item={item} className="items__detail"
-                          handleSubmit={this.handleSubmit}
-                          handleDelete={this.handleDelete}
-                          formData={{
+                          onSubmit={this.handleSubmit}
+                          onDelete={this.handleDelete}
+                          initialValues={{
                               text: item.text,
                               description: item.description,
                               value: item.value
