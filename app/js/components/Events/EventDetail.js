@@ -15,8 +15,6 @@ class EventDetail extends React.Component {
     }
 
     handleSubmit = (values) => {
-        e.preventDefault();
-
         const event = this.props.events.records[this.props.params.id];
 
         event.text = values.text;
