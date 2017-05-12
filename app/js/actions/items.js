@@ -1,6 +1,6 @@
 import fetch from "isomorphic-fetch";
 import {push} from "react-router-redux";
-import {types} from "../types";
+import {ActionTypes as types} from "../constants";
 
 export const queryItems = () => {
     return function (dispatch) {

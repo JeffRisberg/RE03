@@ -1,7 +1,0 @@
-export const types = {
-    RESET_EVENTS: 'RESET_EVENTS',
-    APPEND_EVENTS: 'APPEND_EVENTS',
-
-    RESET_ITEMS: 'RESET_ITEMS',
-    APPEND_ITEMS: 'APPEND_ITEMS'
-};

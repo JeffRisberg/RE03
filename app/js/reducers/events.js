@@ -1,5 +1,5 @@
 import {handleActions} from "redux-actions";
-import {types} from "../types";
+import {ActionTypes as types} from "../constants";
 
 export default handleActions({
     [types.RESET_EVENTS]: (state, action) => {
