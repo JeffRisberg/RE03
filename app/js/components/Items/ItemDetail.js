@@ -60,7 +60,7 @@ ItemDetail.contextTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.items
+        items: state.app.items
     };
 };
 export default connect(

@@ -47,7 +47,7 @@ class ItemList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.items
+        items: state.app.items
     };
 };
 export default connect(

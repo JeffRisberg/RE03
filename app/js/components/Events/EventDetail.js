@@ -59,7 +59,7 @@ EventDetail.contextTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        events: state.events
+        events: state.app.events
     };
 };
 

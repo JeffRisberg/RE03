@@ -38,7 +38,7 @@ class EventList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        events: state.events
+        events: state.app.events
     };
 };
 export default connect(
