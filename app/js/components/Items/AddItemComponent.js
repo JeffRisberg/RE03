@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from "react-redux";
-import {addItem} from "../actions/items";
+import {addItem} from "../../actions/items";
 
-let AddItem = ({dispatch}) => {
+let AddItemComponent = ({dispatch}) => {
     let text;
     let value;
     let description;
@@ -37,4 +37,4 @@ let AddItem = ({dispatch}) => {
     );
 };
 
-export default connect()(AddItem);
+export default connect()(AddItemComponent);

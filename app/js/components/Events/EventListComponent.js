@@ -1,23 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router'
-import { connect } from 'react-redux';
-import { toggleEvent } from '../../actions/events';
 import './Events.scss';
 
-class EventList extends React.Component {
+class EventListComponent extends React.Component {
 
     render() {
-        const records = this.props.events.idList.map(id => this.props.events.records[id]);
-
-        const eventNodes = records.map((event, key) => {
+        const eventNodes = this.props.records.map((event, key) => {
             const id = event.id;
 
             return (
                 <div key={key} className="events__event">
                     <Link to={'/events/detail/'+id} className='btn btn-default'>View</Link>
                     {' '}
-            <span style={{textDecoration: event.completed ? 'line-through' : 'none'}}
-                  onClick={() => this.props.toggleEvent(event)}>
+                    <span style={{textDecoration: event.completed ? 'line-through' : 'none'}}
+                          onClick={() => this.props.toggleEvent(event)}>
                 {event.text}
             </span>
                     {' '}
@@ -36,13 +32,4 @@ class EventList extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        events: state.app.events
-    };
-};
-export default connect(
-    mapStateToProps,
-    {toggleEvent}
-)(EventList);
-
+export default EventListComponent;

@@ -1,15 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router'
-import { connect } from 'react-redux';
-import { toggleItem } from '../../actions/items';
 import './Items.scss';
 
-class ItemList extends React.Component {
+class ItemListComponent extends React.Component {
 
     render() {
-        const records = this.props.items.idList.map(id => this.props.items.records[id]);
-
-        const itemNodes = records.map((item, key) => {
+        const itemNodes = this.props.records.map((item, key) => {
             const id = item.id;
 
             return (
@@ -45,14 +41,6 @@ class ItemList extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        items: state.app.items
-    };
-};
-export default connect(
-    mapStateToProps,
-    {toggleItem}
-)(ItemList);
+export default ItemListComponent;
 
 

@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from "react-redux";
-import {addEvent} from "../actions/events";
+import {addEvent} from "../../actions/events";
 
-let AddEvent = ({dispatch}) => {
+let AddEventComponent = ({dispatch}) => {
     let text;
     let time;
 
@@ -32,4 +32,4 @@ let AddEvent = ({dispatch}) => {
     );
 };
 
-export default connect()(AddEvent);
+export default connect()(AddEventComponent);

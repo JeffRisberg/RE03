@@ -1,10 +1,11 @@
-import React from "react";
-import {connect} from "react-redux";
-import {fetchItem, saveItem, deleteItem} from "../../actions/items";
-import ItemForm from "./ItemForm";
-import "./Items.scss";
+import React from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {fetchItem, saveItem, deleteItem} from '../../actions/items';
+import ItemFormComponent from './ItemFormComponent';
+import './Items.scss';
 
-class ItemDetail extends React.Component {
+class ItemFormContainer extends React.Component {
 
     componentDidMount() {
         const id = this.props.params.id;
@@ -40,22 +41,22 @@ class ItemDetail extends React.Component {
         if (item != null) {
 
             return (
-                <ItemForm item={item} className="items__detail"
-                          onSubmit={this.handleSubmit}
-                          onDelete={this.handleDelete}
-                          initialValues={{
-                              text: item.text,
-                              description: item.description,
-                              value: item.value
-                          }}/>
+                <ItemFormComponent item={item} className="items__detail"
+                                   onSubmit={this.handleSubmit}
+                                   onDelete={this.handleDelete}
+                                   initialValues={{
+                                       text: item.text,
+                                       description: item.description,
+                                       value: item.value
+                                   }}/>
             );
         }
         else
             return null;
     }
 }
-ItemDetail.contextTypes = {
-    router: React.PropTypes.object.isRequired
+ItemFormContainer.contextTypes = {
+    router: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -66,4 +67,4 @@ const mapStateToProps = (state) => {
 export default connect(
     mapStateToProps,
     {fetchItem, saveItem, deleteItem}
-)(ItemDetail);
+)(ItemFormContainer);

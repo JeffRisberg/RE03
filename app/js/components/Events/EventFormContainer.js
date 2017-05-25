@@ -1,10 +1,11 @@
-import React from "react";
-import {connect} from "react-redux";
-import {fetchEvent, saveEvent, deleteEvent} from "../../actions/events";
-import EventForm from "./EventForm";
-import "./Events.scss";
+import React from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {fetchEvent, saveEvent, deleteEvent} from '../../actions/events';
+import EventFormComponent from './EventFormComponent';
+import './Events.scss';
 
-class EventDetail extends React.Component {
+class EventFormContainer extends React.Component {
 
     componentDidMount() {
         const id = this.props.params.id;
@@ -39,22 +40,22 @@ class EventDetail extends React.Component {
 
         if (event != null) {
             return (
-                <EventForm event={event} className="events__detail"
-                           onSubmit={this.handleSubmit}
-                           onDelete={this.handleDelete}
-                           initialValues={{
-                               text: event.text,
-                               description: event.description,
-                               time: event.time
-                           }}/>
+                <EventFormComponent event={event} className="events__detail"
+                                    onSubmit={this.handleSubmit}
+                                    onDelete={this.handleDelete}
+                                    initialValues={{
+                                        text: event.text,
+                                        description: event.description,
+                                        time: event.time
+                                    }}/>
             );
         }
         else
             return null;
     }
 }
-EventDetail.contextTypes = {
-    router: React.PropTypes.object.isRequired
+EventFormContainer.contextTypes = {
+    router: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -66,4 +67,4 @@ const mapStateToProps = (state) => {
 export default connect(
     mapStateToProps,
     {fetchEvent, saveEvent, deleteEvent}
-)(EventDetail);
+)(EventFormContainer);

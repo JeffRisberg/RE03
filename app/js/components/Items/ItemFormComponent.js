@@ -1,19 +1,21 @@
 /*eslint no-class-assign: 0*/
+
 import React from "react";
 import {Field, reduxForm} from "redux-form";
-import "./Events.scss";
+import "./Items.scss";
 
 /**
- * Event Editing Form
+ * Item Editing Form
  *
  * @author Jeff Risberg
  * @since May 2016 (updated in May 2017 to use redux-form)
  */
-class EventForm extends React.Component {
+class ItemFormComponent extends React.Component {
     render() {
-        const event = this.props.event;
+        const item = this.props.item;
 
-        if (event !== null && event !== undefined) {
+        if (item !== null && item !== undefined) {
+
             return (
                 <div className={this.props.className}>
                     <form onSubmit={this.props.handleSubmit}>
@@ -25,9 +27,16 @@ class EventForm extends React.Component {
                             </div>
                         </div>
                         <div>
-                            <label>Time:</label>
+                            <label>Value:</label>
                             <div>
-                                <Field name="time" size="20"
+                                <Field name="value" size="20"
+                                       component="input" type="text" placeholder=""/>
+                            </div>
+                        </div>
+                        <div>
+                            <label>Description:</label>
+                            <div>
+                                <Field name="description" size="40"
                                        component="input" type="text" placeholder=""/>
                             </div>
                         </div>
@@ -51,8 +60,9 @@ class EventForm extends React.Component {
 }
 
 // Decorate the form component
-EventForm = reduxForm({
-    form: 'event' // a unique name for this form
-})(EventForm);
+ItemFormComponent = reduxForm({
+    form: 'item' // a unique name for this form
+})(ItemFormComponent);
 
-export default EventForm;
+export default ItemFormComponent;
+
