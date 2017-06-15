@@ -6,7 +6,8 @@ import EventFormContainer from '../components/Events/EventFormContainer';
 class Events extends React.Component {
 
     render() {
-        const id = this.props.params != undefined ? this.props.params.id : undefined;
+        const id = this.props.route.detail != undefined && this.props.params != undefined ?
+            this.props.params.id : undefined;
         const content = (id != undefined) ?
             <EventFormContainer {...this.props} /> : <EventListContainer {...this.props} />;
 

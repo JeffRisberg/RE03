@@ -6,7 +6,8 @@ import ItemFormContainer from '../components/Items/ItemFormContainer';
 class Items extends React.Component {
 
     render() {
-        const id = this.props.params != undefined ? this.props.params.id : undefined;
+        const id = this.props.route.detail != undefined && this.props.params != undefined ?
+            this.props.params.id : undefined;
         const content = (id != undefined) ?
             <ItemFormContainer {...this.props} /> : <ItemListContainer {...this.props} />;
 
@@ -19,8 +20,7 @@ class Items extends React.Component {
                 </Medium>
                 <LessThanMedium>
                     <div style={{ borderBottom: '5px solid blue' }}>
-
-                    {content}
+                        {content}
                     </div>
                 </LessThanMedium>
             </div>

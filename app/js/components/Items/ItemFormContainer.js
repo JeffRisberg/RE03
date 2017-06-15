@@ -24,7 +24,7 @@ class ItemFormContainer extends React.Component {
 
         this.props.saveItem(item);
 
-        this.context.router.push('/items');
+        this.context.router.push('#/items/redraw');
     }
 
     handleDelete = (e) => {
@@ -32,7 +32,7 @@ class ItemFormContainer extends React.Component {
 
         const item = this.props.items.records[this.props.params.id];
 
-        this.props.deleteItem(item, '/items'); // this will go to /items after delete
+        this.props.deleteItem(item, '#/items/redraw'); // this will go to /items/redraw after delete
     }
 
     render() {

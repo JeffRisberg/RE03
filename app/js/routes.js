@@ -10,11 +10,13 @@ export default (
         <IndexRoute component={Home}/>
         <Route path="items">
             <IndexRoute component={Items}/>
-            <Route path="detail/:id" component={Items}/>
+            <Route path="detail/:id" component={Items} detail="true"/>
+            <Route path="redraw" component={Items}/>
         </Route>
         <Route path="events">
             <IndexRoute component={Events}/>
-            <Route path="detail/:id" component={Events}/>
+            <Route path="detail/:id" component={Events} detail="true"/>
+            <Route path="redraw" component={Events}/>
         </Route>
     </Route>
 );
