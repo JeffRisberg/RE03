@@ -7,17 +7,19 @@ class Events extends React.Component {
 
     render() {
         const id = this.props.params != undefined ? this.props.params.id : undefined;
+        const content = (id != undefined) ?
+            <EventFormContainer {...this.props} /> : <EventListContainer {...this.props} />;
 
         return (
             <div>
                 <Medium>
-                    <div style={{ background: 'red' }}>
-                        {id != undefined ? <EventFormContainer {...this.props} /> : <EventListContainer /> }
+                    <div style={{ borderBottom: '5px solid orange' }}>
+                        {content}
                     </div>
                 </Medium>
                 <LessThanMedium>
-                    <div style={{ background: 'blue' }}>
-                        {id != undefined ? <EventFormContainer {...this.props} /> : <EventListContainer /> }
+                    <div style={{ borderBottom: '5px solid yellow' }}>
+                        {content}
                     </div>
                 </LessThanMedium>
             </div>

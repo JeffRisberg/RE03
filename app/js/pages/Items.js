@@ -7,17 +7,20 @@ class Items extends React.Component {
 
     render() {
         const id = this.props.params != undefined ? this.props.params.id : undefined;
+        const content = (id != undefined) ?
+            <ItemFormContainer {...this.props} /> : <ItemListContainer {...this.props} />;
 
         return (
             <div>
                 <Medium>
-                    <div style={{ background: 'red' }}>
-                        {id != undefined ? <ItemFormContainer {...this.props} /> : <ItemListContainer /> }
+                    <div style={{ borderBottom: '5px solid red' }}>
+                        {content}
                     </div>
                 </Medium>
                 <LessThanMedium>
-                    <div style={{ background: 'blue' }}>
-                        {id != undefined ? <ItemFormContainer {...this.props} /> : <ItemListContainer /> }
+                    <div style={{ borderBottom: '5px solid blue' }}>
+
+                    {content}
                     </div>
                 </LessThanMedium>
             </div>
