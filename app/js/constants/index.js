@@ -6,6 +6,12 @@ export const ActionTypes = {
     APPEND_ITEMS: 'APPEND_ITEMS'
 };
 
+export const paths = {
+    Events: 'events',
+    Items: 'items',
+    Index: '/',
+};
+
 export const API = {
     //baseUrl: config.baseUrl,
     //refreshAccessTokenPath: config.refreshAccessTokenPath,
