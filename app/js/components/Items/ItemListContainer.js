@@ -13,12 +13,10 @@ class ItemListContainer extends React.Component {
 
     render() {
         if (this.props.items != undefined) {
-            const records = this.props.items.idList.map(id => this.props.items.records[id]);
-
             return (
                 <div className="itemPage">
                     <AddItemComponent />
-                    <ItemListComponent records={records}
+                    <ItemListComponent records={this.props.items}
                                        toggleItem={this.props.toggleItem} />
                 </div>
             );

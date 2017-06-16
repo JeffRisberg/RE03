@@ -13,12 +13,10 @@ class EventListContainer extends React.Component {
 
     render() {
         if (this.props.events != undefined) {
-            const records = this.props.events.idList.map(id => this.props.events.records[id]);
-
             return (
                 <div className="eventPage">
                     <AddEventComponent />
-                    <EventListComponent records={records}
+                    <EventListComponent records={this.props.events}
                                         toggleEvent={this.props.toggleEvent} />
                 </div>
             );

@@ -30,8 +30,8 @@ describe('We can render an EventListContainer', () => {
 
         const initialContent = {
             app: {
-                items: { idList: [], records: {} },
-                events: { idList: [], records: {} }
+                items: [],
+                events: []
             }
         };
 

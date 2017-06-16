@@ -1,6 +1,7 @@
-import fetch from "isomorphic-fetch";
-import {push} from "react-router-redux";
-import {ActionTypes as types} from "../constants";
+import fetch from 'isomorphic-fetch';
+import { push } from 'react-router-redux';
+import { initialize } from 'redux-form';
+import { ActionTypes as types, forms } from '../constants';
 
 export const queryEvents = () => {
     return function (dispatch) {
@@ -23,9 +24,10 @@ export const fetchEvent = (id) => {
         return fetch('/api/events/' + id, {})
             .then(response => response.json())
             .then((json) => {
+                dispatch(initialize(forms.Event, json.data[0]));
                 dispatch(
                     {
-                        type: types.APPEND_EVENTS,
+                        type: types.FETCH_EVENT_SUCCESS,
                         events: json.data
                     });
             });
@@ -34,7 +36,7 @@ export const fetchEvent = (id) => {
 
 export const toggleEvent = (event) => {
     return function (dispatch) {
-        var newEvent = {...event, completed: !event.completed};
+        var newEvent = { ...event, completed: !event.completed };
         saveEvent(newEvent)(dispatch);
     }
 };
@@ -48,14 +50,15 @@ export const saveEvent = (event) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({event: event})
+            body: JSON.stringify({ event: event })
         })
             .then(response => response.json())
             .then((json) => {
                 dispatch({
-                    type: types.APPEND_EVENTS,
+                    type: types.PERSIST_EVENT_SUCCESS,
                     events: json.data
                 });
+                dispatch(push('/events'));
             });
     };
 };
@@ -69,22 +72,23 @@ export const addEvent = (event) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({event: event})
+            body: JSON.stringify({ event: event })
         })
             .then(response => response.json())
             .then((json) => {
                 dispatch({
-                    type: types.APPEND_EVENTS,
+                    type: types.PERSIST_EVENT_SUCCESS,
                     events: json.data
                 });
+                dispatch(queryEvents());
             });
     }
 };
 
-export const deleteEvent = (event, thenUrl) => {
+export const deleteEvent = (id) => {
     return function (dispatch) {
 
-        return fetch('/api/events/' + event.id, {
+        return fetch('/api/events/' + id, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -92,7 +96,7 @@ export const deleteEvent = (event, thenUrl) => {
             }
         })
             .then(() => {
-                dispatch(push(thenUrl))
+                dispatch(push('/events'));
             });
     };
 };
