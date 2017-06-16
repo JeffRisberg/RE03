@@ -1,5 +1,5 @@
 jest
-    .unmock('../app/js/components/Home')
+    .unmock('../app/js/pages/Home')
 ;
 
 import React from 'react';
@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
 import TestUtils from 'react-addons-test-utils';
 
-import Home from '../app/js/components/Home';
+import Home from '../app/js/pages/Home';
 
 describe('We can render a Home component', () => {
     it('renders correctly', () => {

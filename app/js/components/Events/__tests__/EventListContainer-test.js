@@ -1,7 +1,7 @@
 jest
     .unmock('redux')
     .unmock('react-redux')
-    .unmock('../EventList')
+    .unmock('../EventListContainer')
     .unmock('../../../../js/reducers/items')
     .unmock('../../../../js/reducers/events')
 ;
@@ -9,45 +9,47 @@ jest
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-
-import { types } from '../../../../js/types'
-
-import EventList from '../../../../js/components/Events/EventList';
-
+import { ActionTypes } from '../../../../js/constants';
+import EventListContainer from '../../../../js/components/Events/EventListContainer';
 import items from '../../../../js/reducers/items';
 import events from '../../../../js/reducers/events';
 
-describe('We can render an EventList component', () => {
+describe('We can render an EventListContainer', () => {
     it('contains content', () => {
 
-        const combinedReducers = combineReducers({
+        const combinedReducers1 = combineReducers({
             items,
             events
         });
 
+        const combinedReducers2 = combineReducers({
+            app: combinedReducers1
+        });
+
         const initialContent = {
-            items: {idList: [], records: {}},
-            events: {idList: [], records: {}}
+            app: {
+                items: { idList: [], records: {} },
+                events: { idList: [], records: {} }
+            }
         };
 
         const store = createStore(
-            combinedReducers,
+            combinedReducers2,
             initialContent
         );
 
         store.dispatch({
-            type: types.APPEND_EVENTS,
-            events: [{text: "Dinner", time: "1800"}]
+            type: ActionTypes.APPEND_EVENTS,
+            events: [{ text: "Dinner", time: "1800" }]
         });
 
         const eventList =
             TestUtils.renderIntoDocument(
                 <div>
                     <Provider store={store}>
-                        <EventList />
+                        <EventListContainer />
                     </Provider>
                 </div>
             );

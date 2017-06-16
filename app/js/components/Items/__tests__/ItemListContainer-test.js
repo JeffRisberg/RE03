@@ -1,7 +1,7 @@
 jest
     .unmock('redux')
     .unmock('react-redux')
-    .unmock('../ItemList')
+    .unmock('../ItemListContainer')
     .unmock('../../../../js/reducers/items')
     .unmock('../../../../js/reducers/events')
 ;
@@ -9,45 +9,47 @@ jest
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-
-import { types } from '../../../../js/types'
-
-import ItemList from '../../../../js/components/Items/ItemList';
-
+import { ActionTypes } from '../../../../js/constants';
+import ItemListContainer from '../../../../js/components/Items/ItemListContainer';
 import items from '../../../../js/reducers/items';
 import events from '../../../../js/reducers/events';
 
-describe('We can render an ItemList component', () => {
+describe('We can render an ItemListContainer', () => {
     it('contains content', () => {
 
-        const combinedReducers = combineReducers({
+        const combinedReducers1 = combineReducers({
             items,
             events
         });
 
+        const combinedReducers2 = combineReducers({
+            app: combinedReducers1
+        });
+
         const initialContent = {
-            items: {idList: [], records: {}},
-            events: {idList: [], records: {}}
+            app: {
+                items: { idList: [], records: {} },
+                events: { idList: [], records: {} }
+            }
         };
 
         const store = createStore(
-            combinedReducers,
+            combinedReducers2,
             initialContent
         );
 
         store.dispatch({
-            type: types.APPEND_ITEMS,
-            items: [{text: "Lassie", description: "Big dog", value: 67}]
+            type: ActionTypes.APPEND_ITEMS,
+            items: [{ text: "Lassie", description: "Big dog", value: 67 }]
         });
 
         const itemList =
             TestUtils.renderIntoDocument(
                 <div>
                     <Provider store={store}>
-                        <ItemList />
+                        <ItemListContainer />
                     </Provider>
                 </div>
             );

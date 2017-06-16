@@ -24,7 +24,7 @@ class EventFormContainer extends React.Component {
 
         this.props.saveEvent(event);
 
-        this.context.router.push('#/events/redraw');
+        this.context.router.push('/events');
     }
 
     handleDelete = (e) => {
@@ -32,7 +32,7 @@ class EventFormContainer extends React.Component {
 
         const event = this.props.events.records[this.props.params.id];
 
-        this.props.deleteEvent(event, '#/events/redraw'); // this will go to /events/redraw after delete
+        this.props.deleteEvent(event, '/events'); // this will go to /events after delete
     }
 
     render() {
