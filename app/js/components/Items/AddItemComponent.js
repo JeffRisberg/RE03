@@ -3,14 +3,14 @@ import {connect} from "react-redux";
 import {addItem} from "../../actions/items";
 
 let AddItemComponent = ({dispatch}) => {
-    let text;
+    let name;
     let value;
     let description;
 
     return (
         <div>
             <input ref={node => {
-                text = node;
+                name = node;
             }} size="40"/>
             <input ref={node => {
                 value = node;
@@ -20,14 +20,14 @@ let AddItemComponent = ({dispatch}) => {
             }} size="20"/>
             <button onClick={() => {
                 const item = {
-                    text: text.value,
+                    name: name.value,
                     value: value.value,
                     description: description.value,
                     completed: false
                 };
                 addItem(item)(dispatch);
 
-                text.value = '';
+                name.value = '';
                 value.value = '';
                 description.value = '';
             }}>

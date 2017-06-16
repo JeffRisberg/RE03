@@ -10,6 +10,18 @@ import './Items.scss';
  * @author Jeff Risberg
  * @since May 2017
  */
+
+// eslint-disable-next-line
+export const renderField = ({input, label, type, meta: {touched, error}, size}) => {
+    const className = (touched && error) ? 'form-input form-input-error' : 'form-input';
+    return (
+        <div>
+            <input {...input} size={size || 20} type={type} className={className} autoComplete="off" />
+            {touched && ((error && <span className="form-input-error-copy">{error}</span>))}
+        </div>
+    );
+};
+
 const propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     reset: PropTypes.func.isRequired,
@@ -36,38 +48,40 @@ class ItemFormComponent extends React.Component {
     }
 
     render() {
+        const messageClass = this.props.error ? 'form-error-copy' : 'form-label';
+
         return (
             <div className="items__detail">
                 <form onSubmit={this.props.handleSubmit(this.props.submitHandler)}>
+                    {(this.props.error) ? <div className={messageClass}>{this.props.error}</div> : null }
                     <div>
-                        <label>Text:</label>
+                        <label>Name:</label>
                         <div>
-                            <Field name="text" size="40"
-                                   component="input" type="text" placeholder=""/>
+                            <Field name="name" size="40"
+                                   component={renderField} type="text" placeholder=""/>
                         </div>
                     </div>
                     <div>
                         <label>Value:</label>
                         <div>
                             <Field name="value" size="20"
-                                   component="input" type="text" placeholder=""/>
+                                   component={renderField} type="number" placeholder=""/>
                         </div>
                     </div>
                     <div>
                         <label>Description:</label>
                         <div>
                             <Field name="description" size="40"
-                                   component="input" type="text" placeholder=""/>
+                                   component={renderField} type="text" placeholder=""/>
                         </div>
                     </div>
-
                     <div>
-                        <input type="submit" value="Submit" className="btn btn-default"/>
+                        <button type="submit" className="btn btn-default">Submit</button>
                     </div>
                     <div>
-                        <a onClick={() => this.props.deleteHandler(this.props.params.id)} className="btn btn-default">
+                        <button onClick={() => this.props.deleteHandler(this.props.params.id)} className="btn btn-default">
                             Delete
-                        </a>
+                        </button>
                     </div>
                 </form>
             </div>

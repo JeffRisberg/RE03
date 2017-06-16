@@ -7,14 +7,15 @@ import './Items.scss';
 
 const validate = (values) => {
     const errors = {};
-    if (!values.Text) {
-        errors.Text = 'Please enter some text.';
+
+    if (!values.name) {
+        errors.name = 'Please enter a name.';
     }
-    if (!values.Value) {
-        errors.Value = 'Please enter a value.';
+    if (!values.value) {
+        errors.value = 'Please enter a value.';
     }
-    if (!values.Description) {
-        errors.Description = 'Please enter a description.';
+    if (!values.description) {
+        errors.description = 'Please enter a description.';
     }
 
     return errors;

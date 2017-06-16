@@ -13,7 +13,7 @@ class ItemListComponent extends React.Component {
                     <td><Link to={'/items/detail/'+id} className='btn btn-default'>View</Link></td>
                     <td style={{textDecoration: item.completed ? 'line-through' : 'none'}}
                         onClick={() => this.props.toggleItem(item)}>
-                        {item.text}
+                        {item.name}
                     </td>
                     <td className="text-right">${item.value}</td>
                     <td>{item.description}</td>
@@ -27,7 +27,7 @@ class ItemListComponent extends React.Component {
                     <thead>
                     <tr>
                         <th>{''}</th>
-                        <th>Text</th>
+                        <th>Name</th>
                         <th className="text-right">Value</th>
                         <th>Description</th>
                     </tr>

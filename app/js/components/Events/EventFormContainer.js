@@ -7,11 +7,12 @@ import './Events.scss';
 
 const validate = (values) => {
     const errors = {};
-    if (!values.Text) {
-        errors.Text = 'Please enter some text.';
+
+    if (!values.text) {
+        errors.text = 'Please enter some text.';
     }
-    if (!values.Time) {
-        errors.Time = 'Please enter a time.';
+    if (!values.time || values.time.length != 4 || parseInt(values.time) > 2359) {
+        errors.time = 'Please enter a time (0000 to 2359).';
     }
 
     return errors;
