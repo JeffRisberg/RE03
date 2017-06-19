@@ -12,11 +12,11 @@ import './Events.scss';
  */
 
 // eslint-disable-next-line
-export const renderField = ({input, label, type, meta: {touched, error}, size}) => {
+export const renderField = ({ input, label, type, meta: { touched, error }, size }) => {
     const className = (touched && error) ? 'form-input form-input-error' : 'form-input';
     return (
         <div>
-            <input {...input} size={size || 20} type={type} className={className} autoComplete="off" />
+            <input {...input} size={size || 20} type={type} className={className} autoComplete="off"/>
             {touched && ((error && <span className="form-input-error-copy">{error}</span>))}
         </div>
     );
@@ -58,21 +58,22 @@ class EventFormComponent extends React.Component {
                         <label>Text:</label>
                         <div>
                             <Field name="text" size="40"
-                                   component={renderField} type="text" placeholder=""/>
+                                component={renderField} type="text" placeholder=""/>
                         </div>
                     </div>
                     <div>
                         <label>Time:</label>
                         <div>
                             <Field name="time" size="20"
-                                   component={renderField} type="number" placeholder=""/>
+                                component={renderField} type="number" placeholder=""/>
                         </div>
                     </div>
                     <div>
                         <button type="submit" className="btn btn-default">Submit</button>
                     </div>
                     <div>
-                        <button onClick={() => this.props.deleteHandler(this.props.params.id)} className="btn btn-default">
+                        <button onClick={() => this.props.deleteHandler(this.props.params.id)}
+                            className="btn btn-default">
                             Delete
                         </button>
                     </div>

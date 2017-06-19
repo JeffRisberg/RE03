@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import './Events.scss';
 
 class EventListComponent extends React.Component {
@@ -10,12 +10,12 @@ class EventListComponent extends React.Component {
 
             return (
                 <div key={key} className="events__event">
-                    <Link to={'/events/detail/'+id} className='btn btn-default'>View</Link>
+                    <Link to={'/events/detail/' + id} className='btn btn-default'>View</Link>
                     {' '}
-                    <span style={{textDecoration: event.completed ? 'line-through' : 'none'}}
-                          onClick={() => this.props.toggleEvent(event)}>
-                {event.text}
-            </span>
+                    <span style={{ textDecoration: event.completed ? 'line-through' : 'none' }}
+                        onClick={() => this.props.toggleEvent(event)}>
+                        {event.text}
+                    </span>
                     {' '}
                     ({event.time} hours)
                 </div>
