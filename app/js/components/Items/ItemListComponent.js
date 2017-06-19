@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom';
 import './Items.scss';
 
 class ItemListComponent extends React.Component {
@@ -10,8 +10,8 @@ class ItemListComponent extends React.Component {
 
             return (
                 <tr key={key}>
-                    <td><Link to={'/items/detail/'+id} className='btn btn-default'>View</Link></td>
-                    <td style={{textDecoration: item.completed ? 'line-through' : 'none'}}
+                    <td><Link to={'/items/detail/' + id} className='btn btn-default'>View</Link></td>
+                    <td style={{ textDecoration: item.completed ? 'line-through' : 'none' }}
                         onClick={() => this.props.toggleItem(item)}>
                         {item.name}
                     </td>
@@ -25,15 +25,15 @@ class ItemListComponent extends React.Component {
             <div className="items__list">
                 <table className="table">
                     <thead>
-                    <tr>
-                        <th>{''}</th>
-                        <th>Name</th>
-                        <th className="text-right">Value</th>
-                        <th>Description</th>
-                    </tr>
+                        <tr>
+                            <th>{''}</th>
+                            <th>Name</th>
+                            <th className="text-right">Value</th>
+                            <th>Description</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    {itemNodes}
+                        {itemNodes}
                     </tbody>
                 </table>
             </div>

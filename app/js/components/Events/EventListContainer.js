@@ -16,8 +16,7 @@ class EventListContainer extends React.Component {
             return (
                 <div className="eventPage">
                     <AddEventComponent />
-                    <EventListComponent records={this.props.events}
-                                        toggleEvent={this.props.toggleEvent} />
+                    <EventListComponent records={this.props.events} toggleEvent={this.props.toggleEvent} />
                 </div>
             );
         }

@@ -1,6 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {queryItems, toggleItem} from '../../actions/items';
+import { connect } from 'react-redux';
+import { queryItems, toggleItem } from '../../actions/items';
 import AddItemComponent from './AddItemComponent';
 import ItemListComponent from './ItemListComponent';
 import './Items.scss';
@@ -16,8 +16,7 @@ class ItemListContainer extends React.Component {
             return (
                 <div className="itemPage">
                     <AddItemComponent />
-                    <ItemListComponent records={this.props.items}
-                                       toggleItem={this.props.toggleItem} />
+                    <ItemListComponent records={this.props.items} toggleItem={this.props.toggleItem}/>
                 </div>
             );
         }
@@ -34,7 +33,7 @@ const mapStateToProps = (state) => {
 };
 export default connect(
     mapStateToProps,
-    {queryItems, toggleItem}
+    { queryItems, toggleItem }
 )(ItemListContainer);
 
 

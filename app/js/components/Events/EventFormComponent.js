@@ -40,7 +40,7 @@ const defaultProps = {
 class EventFormComponent extends React.Component {
     componentDidMount() {
         const { fetchHandler } = this.props;
-        fetchHandler(this.props.params.id);
+        fetchHandler(this.props.match.params.id);
     }
 
     componentWillUnmount() {

@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, hashHistory} from 'react-router';
+import {BrowserRouter, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
-import routes from './routes';
+import AppRoot from "./AppRoot";
 import configureStore from './configureStore';
 
 const store = configureStore();
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router history={hashHistory} routes={routes}/>
+        <BrowserRouter>
+            <Route path="/" component={AppRoot}/>
+        </BrowserRouter>
     </Provider>,
     document.getElementById('app-root')
 );

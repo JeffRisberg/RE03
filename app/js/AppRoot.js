@@ -1,6 +1,9 @@
 import React from 'react';
+import {Route, NavLink} from 'react-router-dom';
 
-import NavLink from './components/Navigation/NavLink'
+import Home from "./pages/Home";
+import Items from "./pages/Items";
+import Events from "./pages/Events";
 
 class AppRoot extends React.Component {
 
@@ -22,7 +25,11 @@ class AppRoot extends React.Component {
                     </div>
                 </div>
                 <div className="container">
-                    {this.props.children}
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/items/" component={Items}/>
+                    <Route exact path="/items/detail/:id" component={Items}/>
+                    <Route exact path="/events" component={Events}/>
+                    <Route exact path="/events/detail/:id?" component={Events}/>
                 </div>
             </div>
         );
