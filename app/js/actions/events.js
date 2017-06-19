@@ -66,7 +66,7 @@ export const saveEvent = (event) => {
 export const addEvent = (event) => {
     return function (dispatch) {
 
-        return fetch("/api/events", {
+        return fetch('/api/events', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

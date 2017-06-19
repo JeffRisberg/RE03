@@ -66,7 +66,7 @@ export const saveItem = (item) => {
 export const addItem = (item) => {
     return function (dispatch) {
 
-        return fetch("/api/items", {
+        return fetch('/api/items', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -96,7 +96,7 @@ export const deleteItem = (id) => {
             }
         })
             .then(() => {
-                dispatch(push("/items"))
+                dispatch(push('/items'));
             });
     };
 };

@@ -1,14 +1,13 @@
-import { browserHistory } from 'react-router';
-import { routerReducer, routerMiddleware } from 'react-router-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { routerReducer, routerMiddleware } from 'react-router-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
 
-const configureStore = (initialState = {}) => {
+const configureStore = ({initialState = {}, history}) => {
     const middleware = [
-        routerMiddleware(browserHistory),
+        routerMiddleware(history),
         thunk,
     ];
 
