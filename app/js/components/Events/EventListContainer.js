@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {queryEvents, toggleEvent} from '../../actions/events';
-import AddEventComponent from './AddEventComponent';
-import EventListComponent from './EventListComponent';
+import { AddEventComponent } from 'Events';
+import { EventListComponent } from 'Events';
 import './Events.scss';
 
 class EventListContainer extends React.Component {

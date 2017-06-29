@@ -2,7 +2,15 @@
   "presets": ["es2015", "react"],
   "plugins": [
     "transform-object-rest-spread",
-    "transform-class-properties"
+    "transform-class-properties",
+    ["module-resolver", {
+      "root": ["./app/js"],
+      "alias": {
+        "Events": "components/Events",
+        "Items": "components/Items",
+        "pages": "pages"
+      }
+    }]
   ]
 }
 
