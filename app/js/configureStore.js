@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 import reducers from './reducers';
@@ -20,7 +19,7 @@ const configureStore = ({initialState = {}, history}) => {
     const store = createStore(
         reducer,
         initialState,
-        composeWithDevTools(applyMiddleware(...middleware)),
+        applyMiddleware(...middleware),
     );
 
     return store;
