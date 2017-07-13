@@ -4,9 +4,16 @@ import './Items.scss';
 
 class ItemListComponent extends React.Component {
 
+    formatEpochTime(epochTime) {
+        const date = new Date(Number(epochTime) * 1000);
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+    };
+
     render() {
         const itemNodes = this.props.records.map((item, key) => {
             const id = item.id;
+            const valueStr = item.value.toLocaleString(undefined, { minimumFractionDigits: 2 });
 
             return (
                 <tr key={key}>
@@ -15,8 +22,9 @@ class ItemListComponent extends React.Component {
                         onClick={() => this.props.toggleItem(item)}>
                         {item.name}
                     </td>
-                    <td className="text-right">${item.value}</td>
+                    <td className="text-right">${valueStr}</td>
                     <td>{item.description}</td>
+                    <td>{this.formatEpochTime(item.lastUpdated)}</td>
                 </tr>
             );
         });
@@ -30,6 +38,7 @@ class ItemListComponent extends React.Component {
                             <th>Name</th>
                             <th className="text-right">Value</th>
                             <th>Description</th>
+                            <th>Last Updated</th>
                         </tr>
                     </thead>
                     <tbody>
