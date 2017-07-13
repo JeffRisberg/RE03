@@ -8,7 +8,7 @@ class ItemListComponent extends React.Component {
         const date = new Date(Number(epochTime) * 1000);
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
-    };
+    }
 
     render() {
         const itemNodes = this.props.records.map((item, key) => {
