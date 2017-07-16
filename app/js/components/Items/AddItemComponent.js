@@ -23,7 +23,8 @@ let AddItemComponent = ({dispatch}) => {
                     name: name.value,
                     value: value.value,
                     description: description.value,
-                    completed: false
+                    completed: false,
+                    lastUpdated: Date.now()/1000
                 };
                 addItem(item)(dispatch);
 
