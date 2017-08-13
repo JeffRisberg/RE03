@@ -2,3 +2,6 @@
 {"_id":"2","id":"2","name":"Velociraptor","description":"Mean","value":1055,"lastUpdated":1491040800,"completed":false}
 {"_id":"3","id":"3","name":"Tyranosaurus","description":"Really Mean","value":10118,"lastUpdated":1494589000,"completed":false}
 {"_id":"4","id":"4","name":"Lame-Brained Lawyer","description":"Useless","value":10.5,"lastUpdated":1499942061,"completed":false}
+{"_id":"1","id":"1","name":"Stegosaurus","description":"Mild","value":"888","lastUpdated":1489399200,"completed":false}
+{"_id":"1","id":"1","name":"Stegosaurus","description":"Mild","value":"12","lastUpdated":1489399200,"completed":false}
+{"_id":"1","id":"1","name":"Stegosaurus","description":"Mild","value":"22","lastUpdated":1489399200,"completed":false}

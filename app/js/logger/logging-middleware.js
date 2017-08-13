@@ -7,7 +7,7 @@ const defaultOptions = {
 
 // eslint-disable-next-line no-unused-vars
 const loggingMiddleware = options => store => next => action => {
-    const log = get(action, 'payload.meta.log');
+    const log = get(action, 'meta.log');
     options = { ...defaultOptions, ...options };
     if (log) {
         fetch(options.url, {

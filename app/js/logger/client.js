@@ -1,7 +1,5 @@
 /* eslint no-console: off */
 
-const assert = require('assert'); // eslint-disable-line no-unused-vars
-
 const levels = {
     TRACE: 10,
     DEBUG: 20,
@@ -62,9 +60,5 @@ const logger = {
 export const createLogger = options => Object.keys(methods)
     .map(method => ({ [method]: logger[method].bind(this, options) }))
     .reduce((logger, method) => ({ ...logger, ...method }), {});
-
-export const requestLogger = () => console.warn(`'@jg/logger' package 'requestLogger' method should not be used on the client.`);
-export const errorLogger = () => console.warn(`'@jg/logger' package 'errorLogger' method should not be used on the client.`);
-export const clientLogger = () => console.warn(`'@jg/logger' package 'clientLogger' method should not be used on the client.`);
 
 export default logger;

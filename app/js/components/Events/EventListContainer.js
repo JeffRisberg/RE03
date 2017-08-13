@@ -1,13 +1,14 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {queryEvents, toggleEvent} from '../../actions/events';
-import { AddEventComponent } from 'Events';
-import { EventListComponent } from 'Events';
+import { connect } from 'react-redux';
+import log from 'logger';
+import { queryEvents, toggleEvent } from '../../actions/events';
+import { AddEventComponent, EventListComponent } from 'Events';
 import './Events.scss';
 
 class EventListContainer extends React.Component {
 
     componentDidMount() {
+        log.info('Fetching Events');
         this.props.queryEvents();
     }
 
@@ -16,7 +17,7 @@ class EventListContainer extends React.Component {
             return (
                 <div className="eventPage">
                     <AddEventComponent />
-                    <EventListComponent records={this.props.events} toggleEvent={this.props.toggleEvent} />
+                    <EventListComponent records={this.props.events} toggleEvent={this.props.toggleEvent}/>
                 </div>
             );
         }
@@ -33,5 +34,5 @@ const mapStateToProps = (state) => {
 };
 export default connect(
     mapStateToProps,
-    {queryEvents, toggleEvent}
+    { queryEvents, toggleEvent }
 )(EventListContainer);

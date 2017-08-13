@@ -56,7 +56,10 @@ export const saveEvent = (event) => {
             .then((json) => {
                 dispatch({
                     type: types.PERSIST_EVENT_SUCCESS,
-                    events: json.data
+                    events: json.data,
+                    meta: {
+                        log: ['event changed']
+                    }
                 });
                 dispatch(push('/events'));
             });
@@ -78,7 +81,10 @@ export const addEvent = (event) => {
             .then((json) => {
                 dispatch({
                     type: types.PERSIST_EVENT_SUCCESS,
-                    events: json.data
+                    events: json.data,
+                    meta: {
+                        log: ['event changed']
+                    }
                 });
                 dispatch(queryEvents());
             });

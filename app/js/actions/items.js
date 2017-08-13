@@ -56,7 +56,10 @@ export const saveItem = (item) => {
             .then((json) => {
                 dispatch({
                     type: types.PERSIST_ITEM_SUCCESS,
-                    items: json.data
+                    items: json.data,
+                    meta: {
+                        log: ['item changed', item]
+                    }
                 });
                 dispatch(push('/items'));
             });
@@ -78,7 +81,10 @@ export const addItem = (item) => {
             .then((json) => {
                 dispatch({
                     type: types.PERSIST_ITEM_SUCCESS,
-                    items: json.data
+                    items: json.data,
+                    meta: {
+                        log: ['item changed', item]
+                    }
                 })
                 dispatch(queryItems());
             });
