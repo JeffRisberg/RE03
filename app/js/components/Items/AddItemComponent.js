@@ -20,9 +20,9 @@ let AddItemComponent = ({dispatch}) => {
             }} size="20"/>
             <button onClick={() => {
                 const item = {
-                    name: name.value,
-                    value: value.value,
-                    description: description.value,
+                    name: name.value.trim(),
+                    value: value.value.trim(),
+                    description: description.value.trim(),
                     completed: false,
                     lastUpdated: Date.now()/1000
                 };

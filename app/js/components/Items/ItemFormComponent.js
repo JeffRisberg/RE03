@@ -22,22 +22,22 @@ export const renderField = ({ input, label, type, meta: { touched, error }, size
     );
 };
 
-const propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
-    reset: PropTypes.func.isRequired,
-    submitHandler: PropTypes.func.isRequired,
-    submitting: PropTypes.bool,
-    submitSucceeded: PropTypes.bool,
-    error: PropTypes.string,
-};
-
-const defaultProps = {
-    submitting: false,
-    submitSucceeded: false,
-    error: '',
-};
-
 class ItemFormComponent extends React.Component {
+    static propTypes = {
+        handleSubmit: PropTypes.func.isRequired,
+        reset: PropTypes.func.isRequired,
+        submitHandler: PropTypes.func.isRequired,
+        submitting: PropTypes.bool,
+        submitSucceeded: PropTypes.bool,
+        error: PropTypes.string,
+    };
+
+    static defaultProps = {
+        submitting: false,
+        submitSucceeded: false,
+        error: '',
+    };
+
     componentDidMount() {
         const { fetchHandler } = this.props;
         fetchHandler(this.props.match.params.id);
@@ -89,10 +89,6 @@ class ItemFormComponent extends React.Component {
         );
     }
 }
-
-ItemFormComponent.propTypes = propTypes;
-
-ItemFormComponent.defaultProps = defaultProps;
 
 export default ItemFormComponent;
 

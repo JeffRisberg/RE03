@@ -16,9 +16,9 @@ let AddEventComponent = ({dispatch}) => {
             }}/>
             <button onClick={() => {
                 const event = {
-                    text: text.value,
+                    text: text.value.trim(),
                     description: "",
-                    time: time.value,
+                    time: time.value.trim(),
                     completed: false
                 };
                 addEvent(event)(dispatch);

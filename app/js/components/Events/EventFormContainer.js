@@ -32,7 +32,12 @@ const mapDispatchToProps = dispatch => ({
         dispatch(fetchEvent(id));
     },
     submitHandler: (values) => {
-        dispatch(saveEvent(values));
+        const event = {
+            ...values,
+            text: values.text.trim(),
+            time: values.time
+        };
+        dispatch(saveEvent(event));
     },
     deleteHandler: (id) => {
         dispatch(deleteEvent(id));

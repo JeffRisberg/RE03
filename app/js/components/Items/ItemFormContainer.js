@@ -35,7 +35,13 @@ const mapDispatchToProps = dispatch => ({
         dispatch(fetchItem(id));
     },
     submitHandler: (values) => {
-        dispatch(saveItem(values));
+        const item = {
+            ...values,
+            name: values.name.trim(),
+            value: values.value,
+            description: values.description.trim()
+        };
+        dispatch(saveItem(item));
     },
     deleteHandler: (id) => {
         dispatch(deleteItem(id));
