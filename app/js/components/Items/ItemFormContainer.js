@@ -8,8 +8,8 @@ import './Items.scss';
 const validate = (values) => {
     const errors = {};
 
-    if (!values.name) {
-        errors.name = 'Please enter a name.';
+    if (!values.name || values.name.trim().length < 4) {
+        errors.name = 'Please enter a name of at least 4 characters.';
     }
     if (!values.value) {
         errors.value = 'Please enter a value.';
