@@ -17,7 +17,10 @@ class EventListContainer extends React.Component {
             return (
                 <div className="eventPage">
                     <AddEventComponent />
-                    <EventListComponent records={this.props.events} toggleEvent={this.props.toggleEvent}/>
+                    <EventListComponent
+                        records={this.props.events}
+                        status={this.props.status}
+                        toggleEvent={this.props.toggleEvent}/>
                 </div>
             );
         }
@@ -27,11 +30,14 @@ class EventListContainer extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        events: state.app.events
-    };
-};
+const mapStateToProps = (state) => ({
+    events: state.app.events.data,
+    status: {
+        isFetching: state.app.events.isFetching,
+        ...state.app.appErrors,
+    },
+});
+
 export default connect(
     mapStateToProps,
     { queryEvents, toggleEvent }

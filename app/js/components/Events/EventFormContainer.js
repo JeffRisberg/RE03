@@ -24,7 +24,11 @@ const EventFormContainer = reduxForm({
 })(EventFormComponent);
 
 const mapStateToProps = state => ({
-    initialValues: state.app.events,
+    initialValues: state.app.events.data,
+    status: {
+        isFetching: state.app.events.isFetching,
+        ...state.app.appErrors,
+    },
 });
 
 const mapDispatchToProps = dispatch => ({

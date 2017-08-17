@@ -27,7 +27,11 @@ const ItemFormContainer = reduxForm({
 })(ItemFormComponent);
 
 const mapStateToProps = state => ({
-    initialValues: state.app.items,
+    initialValues: state.app.items.data,
+    status: {
+        isFetching: state.app.items.isFetching,
+        ...state.app.appErrors,
+    },
 });
 
 const mapDispatchToProps = dispatch => ({

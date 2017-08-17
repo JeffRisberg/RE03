@@ -10,7 +10,6 @@ import LessThanSmall from './LessThanSmall';
 import LessThanMedium from './LessThanMedium';
 import LessThanLarge from './LessThanLarge';
 import LessThanXLarge from './LessThanXLarge';
-import Svg from './Svg';
 
 export { default as MatchMedia } from './MatchMedia';
 export { default as MediaFeatures } from './MediaFeatures';
@@ -24,7 +23,6 @@ export { default as LessThanSmall } from './LessThanSmall';
 export { default as LessThanMedium } from './LessThanMedium';
 export { default as LessThanLarge } from './LessThanLarge';
 export { default as LessThanXLarge } from './LessThanXLarge';
-export { default as Svg } from './Svg';
 
 export default {
     MatchMedia,
@@ -39,5 +37,4 @@ export default {
     LessThanMedium,
     LessThanLarge,
     LessThanXLarge,
-    Svg,
 };

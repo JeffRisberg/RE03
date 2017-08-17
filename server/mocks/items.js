@@ -16,16 +16,18 @@ module.exports = (app) => {
     itemsRouter.get('/', function (req, res) {
         delete req.query["_"];
         itemsDB.find(req.query).exec(function (error, items) {
-            res.send({
-                'status': 'ok',
-                'data': items
-            })
+            setTimeout(
+                () => res.send({
+                    'status': 'ok',
+                    'data': items
+                }),
+                2000);
         })
     });
 
     itemsRouter.post('/', function (req, res) {
         // Look for the most recently created record
-        itemsDB.find({}).sort({id: -1}).limit(1).exec(function (err, items) {
+        itemsDB.find({}).sort({ id: -1 }).limit(1).exec(function (err, items) {
 
             if (items.length != 0)
                 req.body.item.id = items[0].id + 1;
@@ -35,13 +37,13 @@ module.exports = (app) => {
             // Insert the new record
             itemsDB.insert(req.body.item, function (err, newItem) {
                 res.status(201);
-                res.send({'status': 'ok', 'data': [newItem]});
+                res.send({ 'status': 'ok', 'data': [newItem] });
             })
         });
     });
 
     itemsRouter.get('/:id', function (req, res) {
-        itemsDB.find({id: req.params.id}).exec(function (error, items) {
+        itemsDB.find({ id: req.params.id }).exec(function (error, items) {
             if (items.length > 0)
                 res.send({
                     'status': 'ok',
@@ -58,15 +60,15 @@ module.exports = (app) => {
     });
 
     itemsRouter.put('/:id', function (req, res) {
-        var item = req.body.item;
+        const item = req.body.item;
 
-        itemsDB.update({id: req.params.id}, item, {}, function (err, count) {
-            res.send({'status': 'ok', 'data': [item]});
+        itemsDB.update({ id: req.params.id }, item, {}, function () {
+            res.send({ 'status': 'ok', 'data': [item] });
         });
     });
 
     itemsRouter.delete('/:id', function (req, res) {
-        itemsDB.remove({id: req.params.id}, {}, function (err, count) {
+        itemsDB.remove({ id: req.params.id }, {}, function () {
             res.status(204).end();
         });
     });

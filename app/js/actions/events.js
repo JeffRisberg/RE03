@@ -6,12 +6,15 @@ import { ActionTypes as types, forms } from '../constants';
 export const queryEvents = () => {
     return function (dispatch) {
 
+        dispatch({
+            type: types.FETCH_EVENTS,
+        });
         return fetch('/api/events', {})
             .then(response => response.json())
             .then((json) => {
                 dispatch(
                     {
-                        type: types.RESET_EVENTS,
+                        type: types.FETCH_EVENTS_SUCCESS,
                         events: json.data
                     });
             });
@@ -21,13 +24,16 @@ export const queryEvents = () => {
 export const fetchEvent = (id) => {
     return function (dispatch) {
 
+        dispatch({
+            type: types.FETCH_EVENTS,
+        });
         return fetch('/api/events/' + id, {})
             .then(response => response.json())
             .then((json) => {
                 dispatch(initialize(forms.Event, json.data[0]));
                 dispatch(
                     {
-                        type: types.FETCH_EVENT_SUCCESS,
+                        type: types.FETCH_EVENTS_SUCCESS,
                         events: json.data
                     });
             });
@@ -36,7 +42,7 @@ export const fetchEvent = (id) => {
 
 export const toggleEvent = (event) => {
     return function (dispatch) {
-        var newEvent = { ...event, completed: !event.completed };
+        const newEvent = { ...event, completed: !event.completed };
         saveEvent(newEvent)(dispatch);
     }
 };

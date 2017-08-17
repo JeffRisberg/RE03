@@ -1,14 +1,16 @@
-import {handleActions} from "redux-actions";
-import {ActionTypes as types} from "../constants";
+import { handleActions } from 'redux-actions';
+import { ActionTypes as types } from '../constants';
 
 export default handleActions({
-    [types.RESET_EVENTS]: (state, action) => {
-        const records = [];
-
-        action.events.forEach(record => {
-            records.push(record);
+    [types.FETCH_EVENTS]: (state) => {
+        return Object.assign({}, state, {
+            data: [],
+            isFetching: true,
         });
-
-        return records;
     },
-}, []);
+    [types.FETCH_EVENTS_SUCCESS]: (state, action) => {
+        return Object.assign({}, { data: action.events }, {
+            isFetching: false,
+        });
+    },
+}, { data: [], isFetching: false });

@@ -6,12 +6,15 @@ import { ActionTypes as types, forms } from '../constants';
 export const queryItems = () => {
     return function (dispatch) {
 
+        dispatch({
+            type: types.FETCH_ITEMS,
+        });
         return fetch('/api/items', {})
             .then(response => response.json())
             .then((json) => {
                 dispatch(
                     {
-                        type: types.RESET_ITEMS,
+                        type: types.FETCH_ITEMS_SUCCESS,
                         items: json.data
                     }
                 );
@@ -22,12 +25,15 @@ export const queryItems = () => {
 export const fetchItem = (id) => {
     return function (dispatch) {
 
+        dispatch({
+            type: types.FETCH_ITEMS,
+        });
         return fetch('/api/items/' + id, {})
             .then(response => response.json())
             .then((json) => {
                 dispatch(initialize(forms.Item, json.data[0]));
                 dispatch({
-                    type: types.FETCH_ITEM_SUCCESS,
+                    type: types.FETCH_ITEMS_SUCCESS,
                     items: json.data
                 })
             });

@@ -18,7 +18,10 @@ class ItemListContainer extends React.Component {
             return (
                 <div className="itemPage">
                     <AddItemComponent />
-                    <ItemListComponent records={this.props.items} toggleItem={this.props.toggleItem}/>
+                    <ItemListComponent
+                        records={this.props.items}
+                        status={this.props.status}
+                        toggleItem={this.props.toggleItem}/>
                 </div>
             );
         }
@@ -28,11 +31,14 @@ class ItemListContainer extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        items: state.app.items
-    };
-};
+const mapStateToProps = (state) => ({
+    items: state.app.items.data,
+    status: {
+        isFetching: state.app.items.isFetching,
+        ...state.app.appErrors,
+    },
+});
+
 export default connect(
     mapStateToProps,
     { queryItems, toggleItem }

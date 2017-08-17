@@ -1,0 +1,43 @@
+/* ==========================================================================
+   #CORE
+   ========================================================================== */
+
+// This core file sets up most of the important setup variables. They
+// underpin a lot of how the framework functions and should be modified and
+// preconfigured with caution.
+
+
+// Base typographical styles and baseline grid. You need to define these values
+// in pixels: inuitcss will convert them to more appropriate units.
+
+$global-font-size:    16px !default;
+$global-line-height:  24px !default;
+
+// Spacing values are determined based on your project’s global line height (i.e
+// your baseline grid). It is not recommended that you modify these following
+// variables (it can break your vertical rhythm), but if you need to, you can.
+$global-spacing-unit: $global-line-height;
+
+
+// $global-spacing-unit: round($global-line-height) !default;
+
+// How many times larger/smaller than the default should our spacing unit
+// variants be?
+
+$global-spacing-unit-factor-xs:   0.25 !default;
+$global-spacing-unit-factor-sm:   0.5  !default;
+$global-spacing-unit-factor-ms:   0.75 !default; // medium-small
+$global-spacing-unit-factor-md:   1    !default;
+$global-spacing-unit-factor-ml:   1.5  !default; // medium-large
+$global-spacing-unit-factor-lg:   2    !default;
+$global-spacing-unit-factor-xl:   4    !default;
+
+// Private/framework-only reassignment. Do not alter anything below.
+
+$global-spacing-unit-xs: round($global-spacing-unit * $global-spacing-unit-factor-xs);
+$global-spacing-unit-sm: round($global-spacing-unit * $global-spacing-unit-factor-sm);
+$global-spacing-unit-ms: round($global-spacing-unit * $global-spacing-unit-factor-ms);
+$global-spacing-unit-md: round($global-spacing-unit * $global-spacing-unit-factor-md);
+$global-spacing-unit-ml: round($global-spacing-unit * $global-spacing-unit-factor-ml);
+$global-spacing-unit-lg: round($global-spacing-unit * $global-spacing-unit-factor-lg);
+$global-spacing-unit-xl: round($global-spacing-unit * $global-spacing-unit-factor-xl);

@@ -1,11 +1,28 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
+import { Loading } from 'components';
+import 'components/Loading/Loading.scss';
 import './Events.scss';
 
 class EventListComponent extends React.Component {
+    static propTypes = {
+        records: PropTypes.object,
+        status: PropTypes.object,
+    };
 
     render() {
-        const eventNodes = this.props.records.map((event, key) => {
+        const { records, status } = this.props;
+
+        if (status.isFetching) {
+            return (
+                <div className="events__list">
+                    <Loading size="large" colour="purple"/>
+                </div>
+            );
+        }
+
+        const eventNodes = records.map((event, key) => {
             const id = event.id;
 
             return (

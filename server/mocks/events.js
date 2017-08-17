@@ -16,10 +16,12 @@ module.exports = (app) => {
     eventsRouter.get('/', function (req, res) {
         delete req.query["_"];
         eventsDB.find(req.query).exec(function (error, events) {
-            res.send({
-                'status': 'ok',
-                'data': events
-            })
+            setTimeout(
+                () => res.send({
+                    'status': 'ok',
+                    'data': events
+                }),
+                2000);
         })
     });
 
@@ -58,15 +60,15 @@ module.exports = (app) => {
     });
 
     eventsRouter.put('/:id', function (req, res) {
-        var event = req.body.event;
+        const event = req.body.event;
 
-        eventsDB.update({id: req.params.id}, event, {}, function (err, count) {
+        eventsDB.update({id: req.params.id}, event, {}, function () {
             res.send({'status': 'ok', 'data': [event]});
         });
     });
 
     eventsRouter.delete('/:id', function (req, res) {
-        eventsDB.remove({id: req.params.id}, {}, function (err, count) {
+        eventsDB.remove({id: req.params.id}, {}, function () {
             res.status(204).end();
         });
     });
