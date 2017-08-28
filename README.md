@@ -4,6 +4,7 @@ Technologies used:
 
 - React
 - Redux
+- Router V4
 - ES6
 - Webpack
 - Babel
@@ -14,8 +15,12 @@ Technologies used:
 Run:
 ```
 npm install
-webpack
-npm start
+webpack --watch
+```
+
+Then in a separate window, start the backend as:
+```
+node server
 ```
 
 Check your http://localhost:3000/ or  `open http://localhost:3000/`
