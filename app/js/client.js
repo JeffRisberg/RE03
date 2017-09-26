@@ -12,10 +12,10 @@ const history = createHistory({ basename: '/' });
 const store = configureStore({ initialState: {}, history });
 
 ReactDOM.render(
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <Route path="/" component={AppRoot}/>
-        </ConnectedRouter>
-    </Provider>,
-    document.getElementById('app-root')
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <Route path="/" component={AppRoot}/>
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById('app-root')
 );

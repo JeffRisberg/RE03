@@ -5,6 +5,6 @@ export { default as Loading } from './Loading';
 export { default as Svg } from './Svg';
 
 export default {
-    Loading,
-    Svg,
+  Loading,
+  Svg,
 };
