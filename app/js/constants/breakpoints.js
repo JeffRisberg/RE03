@@ -5,9 +5,9 @@ export const LARGE = 1024;  // 768-1023
 export const XLARGE = 1240; // 1024-1240
 
 export default {
-    XSMALL,
-    SMALL,
-    MEDIUM,
-    LARGE,
-    XLARGE,
+  XSMALL,
+  SMALL,
+  MEDIUM,
+  LARGE,
+  XLARGE,
 };

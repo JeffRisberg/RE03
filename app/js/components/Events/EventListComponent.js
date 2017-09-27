@@ -31,8 +31,8 @@ class EventListComponent extends Component {
           {' '}
           <span style={{ textDecoration: event.completed ? 'line-through' : 'none' }}
             onClick={() => this.props.toggleEvent(event)}>
-                        {event.text}
-                    </span>
+            {event.text}
+          </span>
           {' '}
           ({event.time} hours)
         </div>
