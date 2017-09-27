@@ -4,17 +4,17 @@ import MatchMedia from './MatchMedia';
 import { XLARGE } from '../constants/breakpoints';
 
 const LessThanXLarge = ({ children, mediaFeatures }) => (
-    <MatchMedia mediaQuery={`(max-width: ${XLARGE - 1}px)`} mediaFeatures={mediaFeatures}>
-        { children }
-    </MatchMedia>
+  <MatchMedia mediaQuery={`(max-width: ${XLARGE - 1}px)`} mediaFeatures={mediaFeatures}>
+    { children }
+  </MatchMedia>
 );
 
 LessThanXLarge.propTypes = {
-    mediaFeatures: PropTypes.shape({ width: PropTypes.string }),
+  mediaFeatures: PropTypes.shape({ width: PropTypes.string }),
 };
 
 LessThanXLarge.defaultProps = {
-    mediaFeatures: null,
+  mediaFeatures: null,
 };
 
 export default LessThanXLarge;

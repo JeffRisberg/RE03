@@ -25,16 +25,16 @@ export { default as LessThanLarge } from './LessThanLarge';
 export { default as LessThanXLarge } from './LessThanXLarge';
 
 export default {
-    MatchMedia,
-    MediaFeatures,
-    XSmall,
-    Small,
-    Medium,
-    Large,
-    XLarge,
-    LessThanXSmall,
-    LessThanSmall,
-    LessThanMedium,
-    LessThanLarge,
-    LessThanXLarge,
+  MatchMedia,
+  MediaFeatures,
+  XSmall,
+  Small,
+  Medium,
+  Large,
+  XLarge,
+  LessThanXSmall,
+  LessThanSmall,
+  LessThanMedium,
+  LessThanLarge,
+  LessThanXLarge,
 };

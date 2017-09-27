@@ -4,17 +4,17 @@ import MatchMedia from './MatchMedia';
 import { XLARGE } from '../constants/breakpoints';
 
 const XLarge = ({ children, mediaFeatures }) => (
-    <MatchMedia mediaQuery={`(min-width: ${XLARGE}px)`} mediaFeatures={mediaFeatures}>
-        { children }
-    </MatchMedia>
+  <MatchMedia mediaQuery={`(min-width: ${XLARGE}px)`} mediaFeatures={mediaFeatures}>
+    { children }
+  </MatchMedia>
 );
 
 XLarge.propTypes = {
-    mediaFeatures: PropTypes.shape({ width: PropTypes.string }),
+  mediaFeatures: PropTypes.shape({ width: PropTypes.string }),
 };
 
 XLarge.defaultProps = {
-    mediaFeatures: null,
+  mediaFeatures: null,
 };
 
 export default XLarge;
