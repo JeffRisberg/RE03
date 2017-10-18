@@ -7,7 +7,7 @@ import './Items.scss';
 
 class ItemListComponent extends Component {
   static propTypes = {
-    records: PropTypes.object,
+    records: PropTypes.array,
     status: PropTypes.object,
   };
 

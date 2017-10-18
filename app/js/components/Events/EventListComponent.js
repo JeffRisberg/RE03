@@ -7,7 +7,7 @@ import './Events.scss';
 
 class EventListComponent extends Component {
   static propTypes = {
-    records: PropTypes.object,
+    records: PropTypes.array,
     status: PropTypes.object,
   };
 
