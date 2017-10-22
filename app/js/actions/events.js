@@ -42,9 +42,19 @@ export const fetchEvent = (id) => {
 
 export const toggleEvent = (event) => {
   return function (dispatch) {
-    const newEvent = { ...event, completed: !event.completed };
-    saveEvent(newEvent)(dispatch);
-  }
+    let newEvent = { ...event, completed: !event.completed };
+    return fetch('/api/events/' + event.id, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ event: newEvent })
+    })
+      .then(() => {
+        dispatch(queryEvents());
+      });
+  };
 };
 
 export const saveEvent = (event) => {

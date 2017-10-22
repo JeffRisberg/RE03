@@ -35,7 +35,7 @@ export const fetchItem = (id) => {
         dispatch({
           type: types.FETCH_ITEMS_SUCCESS,
           items: [json.data]
-        })
+        });
       });
   };
 };
@@ -43,8 +43,18 @@ export const fetchItem = (id) => {
 export const toggleItem = (item) => {
   return function (dispatch) {
     let newItem = { ...item, completed: !item.completed };
-    saveItem(newItem)(dispatch);
-  }
+    return fetch('/api/items/' + item.id, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ item: newItem })
+    })
+      .then(() => {
+        dispatch(queryItems());
+      });
+  };
 };
 
 export const saveItem = (item) => {
