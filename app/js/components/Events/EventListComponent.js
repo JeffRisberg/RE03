@@ -9,6 +9,7 @@ class EventListComponent extends Component {
   static propTypes = {
     records: PropTypes.array,
     status: PropTypes.object,
+    toggleEvent: PropTypes.func,
   };
 
   render() {

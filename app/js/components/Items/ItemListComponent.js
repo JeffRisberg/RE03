@@ -9,6 +9,7 @@ class ItemListComponent extends Component {
   static propTypes = {
     records: PropTypes.array,
     status: PropTypes.object,
+    toggleItem: PropTypes.func,
   };
 
   formatEpochTime(epochTime) {
