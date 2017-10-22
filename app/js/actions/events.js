@@ -30,11 +30,11 @@ export const fetchEvent = (id) => {
     return fetch('/api/events/' + id, {})
       .then(response => response.json())
       .then((json) => {
-        dispatch(initialize(forms.Event, json.data[0]));
+        dispatch(initialize(forms.Event, json.data));
         dispatch(
           {
             type: types.FETCH_EVENTS_SUCCESS,
-            events: json.data
+            events: [json.data]
           });
       });
   };
@@ -62,7 +62,7 @@ export const saveEvent = (event) => {
       .then((json) => {
         dispatch({
           type: types.PERSIST_EVENT_SUCCESS,
-          events: json.data,
+          events: [json.data],
           meta: {
             log: ['event changed']
           }

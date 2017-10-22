@@ -31,10 +31,10 @@ export const fetchItem = (id) => {
     return fetch('/api/items/' + id, {})
       .then(response => response.json())
       .then((json) => {
-        dispatch(initialize(forms.Item, json.data[0]));
+        dispatch(initialize(forms.Item, json.data));
         dispatch({
           type: types.FETCH_ITEMS_SUCCESS,
-          items: json.data
+          items: [json.data]
         })
       });
   };
@@ -62,7 +62,7 @@ export const saveItem = (item) => {
       .then((json) => {
         dispatch({
           type: types.PERSIST_ITEM_SUCCESS,
-          items: json.data,
+          items: [json.data],
           meta: {
             log: ['item changed', item]
           }

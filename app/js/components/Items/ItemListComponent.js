@@ -23,7 +23,7 @@ class ItemListComponent extends Component {
     if (status.isFetching) {
       return (
         <div className="items__list">
-          <Loading size="large" colour="purple"/>
+          <Loading size="large" color="purple"/>
         </div>
       );
     }
@@ -41,7 +41,7 @@ class ItemListComponent extends Component {
           </td>
           <td className="text-right">${valueStr}</td>
           <td>{item.description}</td>
-          <td>{this.formatEpochTime(item.lastUpdated)}</td>
+          <td>{this.formatEpochTime(item.last_updated)}</td>
         </tr>
       );
     });

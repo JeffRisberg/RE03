@@ -43,7 +43,8 @@ const mapDispatchToProps = dispatch => ({
     };
     dispatch(saveEvent(event));
   },
-  deleteHandler: (id) => {
+  deleteHandler: (e, id) => {
+    e.preventDefault();
     dispatch(deleteEvent(id));
   },
 });

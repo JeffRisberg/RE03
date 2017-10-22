@@ -72,7 +72,7 @@ class EventFormComponent extends Component {
             <button type="submit" className="btn btn-default">Submit</button>
           </div>
           <div>
-            <button onClick={() => this.props.deleteHandler(this.props.match.params.id)}
+            <button onClick={(e) => this.props.deleteHandler(e, this.props.match.params.id)}
               className="btn btn-default">
               Delete
             </button>

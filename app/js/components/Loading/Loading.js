@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 
 const sizes = ['small', 'medium', 'large'];
 
-const colours = ['purple', 'white', 'grey', 'blue'];
+const colors = ['purple', 'white', 'grey', 'blue'];
 
 const propTypes = {
   size: PropTypes.oneOf(sizes),
-  colour: PropTypes.oneOf(colours),
+  color: PropTypes.oneOf(colors),
 };
 
 const defaultProps = {
   size: 'medium',
-  colour: 'purple',
+  color: 'purple',
 };
 
-const Loading = ({ size, colour, className }) => {
-  const loadingClasses = `loading--${size} loading--${colour}`;
+const Loading = ({ size, color, className }) => {
+  const loadingClasses = `loading--${size} loading--${color}`;
   const classes = className
     ? [className, loadingClasses].join(' ')
     : loadingClasses;

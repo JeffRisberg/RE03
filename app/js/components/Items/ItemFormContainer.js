@@ -47,7 +47,8 @@ const mapDispatchToProps = dispatch => ({
     };
     dispatch(saveItem(item));
   },
-  deleteHandler: (id) => {
+  deleteHandler: (e, id) => {
+    e.preventDefault();
     dispatch(deleteItem(id));
   },
 });
