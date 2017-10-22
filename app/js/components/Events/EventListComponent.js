@@ -7,9 +7,9 @@ import './Events.scss';
 
 class EventListComponent extends Component {
   static propTypes = {
-    records: PropTypes.array,
-    status: PropTypes.object,
-    toggleEvent: PropTypes.func,
+    records: PropTypes.array.isRequired,
+    status: PropTypes.object.isRequired,
+    toggleEvent: PropTypes.func.isRequired,
   };
 
   render() {

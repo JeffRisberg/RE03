@@ -7,9 +7,9 @@ import './Items.scss';
 
 class ItemListComponent extends Component {
   static propTypes = {
-    records: PropTypes.array,
-    status: PropTypes.object,
-    toggleItem: PropTypes.func,
+    records: PropTypes.array.isRequired,
+    status: PropTypes.object.isRequired,
+    toggleItem: PropTypes.func.isRequired,
   };
 
   formatEpochTime(epochTime) {
