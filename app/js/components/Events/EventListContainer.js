@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import log from 'logger';
 import { queryEvents, toggleEvent } from '../../actions/events';
-import { AddEventComponent, EventListComponent } from 'Events';
+import { AddEventComponent, EventListComponent } from '../Events';
 import './Events.scss';
 
 class EventListContainer extends Component {
