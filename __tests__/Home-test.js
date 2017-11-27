@@ -1,11 +1,9 @@
-jest
-    .unmock('../app/js/pages/Home')
-;
+jest.unmock('../app/js/pages/Home');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import renderer from 'react-test-renderer';
-import TestUtils from 'react-addons-test-utils';
+import ReactTestUtils from 'react-dom/test-utils';
 
 import Home from '../app/js/pages/Home';
 
@@ -19,7 +17,7 @@ describe('We can render a Home component', () => {
 
     it('contains content', () => {
         const home =
-            TestUtils.renderIntoDocument(
+          ReactTestUtils.renderIntoDocument(
                 <div>
                     <Home />
                 </div>
@@ -30,7 +28,7 @@ describe('We can render a Home component', () => {
 
     it('allows a custom CSS class', () => {
         const home =
-            TestUtils.renderIntoDocument(
+          ReactTestUtils.renderIntoDocument(
                 <div>
                     <Home className="dog" />
                 </div>

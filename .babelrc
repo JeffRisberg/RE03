@@ -1,16 +1,18 @@
 {
-  "presets": ["es2015", "react"],
-  "plugins": [
-    "transform-object-rest-spread",
-    "transform-class-properties",
-    ["module-resolver", {
-      "root": ["./app/js"],
-      "alias": {
-        "Events": "components/Events",
-        "Items": "components/Items",
-        "pages": "pages"
-      }
-    }]
-  ]
+    "presets": ["es2015", "react"],
+    "plugins": [
+        "transform-object-rest-spread",
+        "transform-class-properties",
+        [
+            "module-resolver", {
+            "root": "./app/js",
+            "alias": {
+                "Events": "js/components/Events",
+                "Items": "js/components/Items",
+                "pages": "js/pages"
+            }
+        }
+        ]
+    ]
 }
 
