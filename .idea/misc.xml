@@ -3,6 +3,9 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="JSX" />
+  </component>
   <component name="JsBowerSettings">
     <exe-path>/opt/boxen/nodenv/shims/bower</exe-path>
     <config-path />
