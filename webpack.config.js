@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'development',
@@ -14,7 +14,7 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('css-loader!sass-loader'),
+        use: [ MiniCssExtractPlugin.loader, "css-loader", "sass-loader" ]
       },
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
       { test: /\.jsx$/, exclude: /node_modules/, loader: "babel-loader" },
@@ -23,6 +23,6 @@ module.exports = {
   },
   plugins: [
     new webpack.IgnorePlugin(/^(buffertools)$/), // unwanted "deeper" dependency
-    new ExtractTextPlugin({ filename: 'public/style.css', allChunks: true })
+    new MiniCssExtractPlugin({ filename: 'public/style.css', allChunks: true })
   ]
 };
