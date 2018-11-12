@@ -42,7 +42,7 @@ class ItemListComponent extends Component {
           </td>
           <td className="text-right">${valueStr}</td>
           <td>{item.description}</td>
-          <td>{this.formatEpochTime(item.last_updated)}</td>
+          <td>{this.formatEpochTime(item.lastUpdated)}</td>
         </tr>
       );
     });
