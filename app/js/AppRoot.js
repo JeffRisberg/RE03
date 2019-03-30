@@ -25,7 +25,7 @@ class AppRoot extends Component {
         </div>
         <div className="container">
           <Route exact path="/" component={Home}/>
-          <Route exact path="/items/" component={Items}/>
+          <Route exact path="/items" component={Items}/>
           <Route exact path="/items/detail/:id" component={Items}/>
           <Route exact path="/events" component={Events}/>
           <Route exact path="/events/detail/:id?" component={Events}/>
