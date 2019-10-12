@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import createHistory from 'history/createBrowserHistory';
+import createHistory from 'history';
 import AppRoot from './AppRoot';
 import configureStore from './configureStore';
 

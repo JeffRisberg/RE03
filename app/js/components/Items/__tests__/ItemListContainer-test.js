@@ -14,7 +14,7 @@ import thunk from 'redux-thunk';
 import { Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
-import createHistory from 'history/createBrowserHistory';
+import createHistory from 'history';
 import { ActionTypes } from '../../../../js/constants';
 import ItemListContainer from '../../../../js/components/Items/ItemListContainer';
 import items from '../../../../js/reducers/items';
