@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
+
 import AppRoot from './AppRoot';
 import configureStore from './configureStore';
 
-const history = createHistory({basename: '/'});
+const history = createBrowserHistory({basename: '/'});
 
 const store = configureStore({initialState: {}, history});
 
