@@ -39,8 +39,7 @@ class ItemFormComponent extends Component {
   };
 
   componentDidMount() {
-    const { fetchHandler } = this.props;
-    fetchHandler(this.props.match.params.id);
+    this.props.fetchHandler(this.props.match.params.id);
   }
 
   componentWillUnmount() {
