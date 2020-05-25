@@ -4,7 +4,7 @@ Technologies used:
 
 - React
 - Redux
-- Router V4
+- Router V5
 - ES6
 - Webpack
 - Babel
