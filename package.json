@@ -63,7 +63,7 @@
     "dependencies": {
         "css-mediaquery": "^0.1.2",
         "debug": "^4.1.1",
-        "history": "^5.0.0",
+        "history": "^4.10.1",
         "isomorphic-fetch": "^2.2.1",
         "jest-cli": "^24.9.0",
         "lodash.get": "^4.4.2",
