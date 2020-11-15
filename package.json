@@ -64,7 +64,7 @@
         "css-mediaquery": "^0.1.2",
         "debug": "^4.2.0",
         "history": "^4.10.1",
-        "isomorphic-fetch": "^2.2.1",
+        "isomorphic-fetch": "^3.0.0",
         "jest-cli": "^24.9.0",
         "lodash.get": "^4.4.2",
         "prop-types": "^15.7.2",
