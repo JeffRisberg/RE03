@@ -41,9 +41,9 @@
         "css-loader": "^5.2.7",
         "eslint": "^6.8.0",
         "eslint-config-airbnb": "^18.2.1",
-        "eslint-plugin-import": "^2.25.2",
-        "eslint-plugin-jsx-a11y": "^6.4.1",
-        "eslint-plugin-react": "^7.26.1",
+        "eslint-plugin-import": "^2.25.3",
+        "eslint-plugin-jsx-a11y": "^6.5.1",
+        "eslint-plugin-react": "^7.27.0",
         "express": "^4.17.1",
         "file-loader": "^3.0.0",
         "glob": "^7.2.0",
@@ -57,7 +57,7 @@
         "react-test-renderer": "^16.14.0",
         "sass-loader": "^7.3.1",
         "style-loader": "^0.23.1",
-        "webpack": "^5.63.0",
+        "webpack": "^5.64.0",
         "webpack-cli": "^4.9.1"
     },
     "dependencies": {
