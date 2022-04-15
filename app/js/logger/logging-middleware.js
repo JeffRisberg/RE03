@@ -1,4 +1,3 @@
-import 'isomorphic-fetch';
 import get from 'lodash.get';
 
 const defaultOptions = {

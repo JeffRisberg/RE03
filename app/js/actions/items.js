@@ -1,7 +1,7 @@
-import fetch from 'isomorphic-fetch';
-import { push } from 'react-router-redux';
-import { initialize } from 'redux-form';
-import { ActionTypes as types, forms } from '../constants';
+import axios from 'axios';
+import {push} from 'react-router-redux';
+import {initialize} from 'redux-form';
+import {ActionTypes as types, forms} from '../constants';
 
 export const queryItems = () => {
   return function (dispatch) {
@@ -9,16 +9,12 @@ export const queryItems = () => {
     dispatch({
       type: types.FETCH_ITEMS,
     });
-    return fetch('/api/items', {})
-      .then(response => response.json())
-      .then((json) => {
-        dispatch(
-          {
-            type: types.FETCH_ITEMS_SUCCESS,
-            items: json.data
-          }
-        );
+    axios('/api/items/').then(result => {
+      dispatch({
+        type: types.FETCH_ITEMS_SUCCESS,
+        items: result.data.data
       });
+    });
   };
 };
 
@@ -28,29 +24,24 @@ export const fetchItem = (id) => {
     dispatch({
       type: types.FETCH_ITEMS,
     });
-    return fetch('/api/items/' + id, {})
-      .then(response => response.json())
-      .then((json) => {
-        dispatch(initialize(forms.Item, json.data));
-        dispatch({
-          type: types.FETCH_ITEMS_SUCCESS,
-          items: [json.data]
-        });
+    axios('/api/items/' + id).then(result => {
+      dispatch(initialize(forms.Item, result.data.data));
+      dispatch({
+        type: types.FETCH_ITEMS_SUCCESS,
+        items: [result.data.data]
       });
+    });
   };
 };
 
 export const toggleItem = (item) => {
   return function (dispatch) {
-    let newItem = { ...item, completed: !item.completed };
-    return fetch('/api/items/' + item.id, {
-      method: 'PUT',
-      headers: {
+    let newItem = {...item, completed: !item.completed};
+    axios.put('/api/items/' + item.id, {item: newItem},
+      {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ item: newItem })
-    })
+      })
       .then(() => {
         dispatch(queryItems());
       });
@@ -60,21 +51,17 @@ export const toggleItem = (item) => {
 export const saveItem = (item) => {
   return function (dispatch) {
 
-    return fetch('/api/items/' + item.id, {
-      method: 'PUT',
-      headers: {
+    axios.put('/api/items/' + item.id, {item: item},
+      {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ item: item })
-    })
-      .then(response => response.json())
-      .then((json) => {
+      })
+      .then(result => {
         dispatch({
           type: types.PERSIST_ITEM_SUCCESS,
-          items: [json.data],
+          items: [result.data.data],
           meta: {
-            log: ['item changed', item]
+            log: ['item changed', result.data]
           }
         });
         dispatch(push('/items'));
@@ -85,19 +72,15 @@ export const saveItem = (item) => {
 export const addItem = (item) => {
   return function (dispatch) {
 
-    return fetch('/api/items', {
-      method: 'POST',
-      headers: {
+    axios.post('/api/items', {item: item},
+      {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ item: item })
-    })
-      .then(response => response.json())
-      .then((json) => {
+      })
+      .then(result => {
         dispatch({
           type: types.PERSIST_ITEM_SUCCESS,
-          items: json.data,
+          items: result.data.data,
           meta: {
             log: ['item changed', item]
           }
@@ -110,17 +93,13 @@ export const addItem = (item) => {
 export const deleteItem = (id) => {
   return function (dispatch) {
 
-    return fetch('/api/items/' + id, {
-      method: 'DELETE',
-      headers: {
+    axios.delete('/api/items/' + id,
+      {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      }
-    })
+      })
       .then(() => {
         dispatch(push('/items'));
       });
   };
 };
-
-

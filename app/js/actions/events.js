@@ -1,7 +1,7 @@
-import fetch from 'isomorphic-fetch';
-import { push } from 'react-router-redux';
-import { initialize } from 'redux-form';
-import { ActionTypes as types, forms } from '../constants';
+import axios from 'axios';
+import {push} from 'react-router-redux';
+import {initialize} from 'redux-form';
+import {ActionTypes as types, forms} from '../constants';
 
 export const queryEvents = () => {
   return function (dispatch) {
@@ -9,15 +9,12 @@ export const queryEvents = () => {
     dispatch({
       type: types.FETCH_EVENTS,
     });
-    return fetch('/api/events', {})
-      .then(response => response.json())
-      .then((json) => {
-        dispatch(
-          {
-            type: types.FETCH_EVENTS_SUCCESS,
-            events: json.data
-          });
+    axios('/api/events').then(result => {
+      dispatch({
+        type: types.FETCH_EVENTS_SUCCESS,
+        events: result.data.data
       });
+    });
   };
 };
 
@@ -27,30 +24,24 @@ export const fetchEvent = (id) => {
     dispatch({
       type: types.FETCH_EVENTS,
     });
-    return fetch('/api/events/' + id, {})
-      .then(response => response.json())
-      .then((json) => {
-        dispatch(initialize(forms.Event, json.data));
-        dispatch(
-          {
-            type: types.FETCH_EVENTS_SUCCESS,
-            events: [json.data]
-          });
+    axios('/api/events/' + id).then(result => {
+      dispatch(initialize(forms.Event, result.data.data));
+      dispatch({
+        type: types.FETCH_EVENTS_SUCCESS,
+        events: [result.data.data]
       });
+    });
   };
 };
 
 export const toggleEvent = (event) => {
   return function (dispatch) {
-    let newEvent = { ...event, completed: !event.completed };
-    return fetch('/api/events/' + event.id, {
-      method: 'PUT',
-      headers: {
+    let newEvent = {...event, completed: !event.completed};
+    axios.put('/api/events/' + event.id, {event: newEvent},
+      {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ event: newEvent })
-    })
+      })
       .then(() => {
         dispatch(queryEvents());
       });
@@ -60,21 +51,17 @@ export const toggleEvent = (event) => {
 export const saveEvent = (event) => {
   return function (dispatch) {
 
-    return fetch('/api/events/' + event.id, {
-      method: 'PUT',
-      headers: {
+    axios.put('/api/events/' + event.id, {event: event},
+      {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ event: event })
-    })
-      .then(response => response.json())
-      .then((json) => {
+      })
+      .then(result => {
         dispatch({
           type: types.PERSIST_EVENT_SUCCESS,
-          events: [json.data],
+          events: [result.data.data],
           meta: {
-            log: ['event changed']
+            log: ['event changed', result.data]
           }
         });
         dispatch(push('/events'));
@@ -85,23 +72,19 @@ export const saveEvent = (event) => {
 export const addEvent = (event) => {
   return function (dispatch) {
 
-    return fetch('/api/events', {
-      method: 'POST',
-      headers: {
+    axios.post('/api/events', {event: event},
+      {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ event: event })
-    })
-      .then(response => response.json())
-      .then((json) => {
+      })
+      .then(result => {
         dispatch({
           type: types.PERSIST_EVENT_SUCCESS,
-          events: json.data,
+          events: result.data.data,
           meta: {
-            log: ['event changed']
+            log: ['event changed', event]
           }
-        });
+        })
         dispatch(queryEvents());
       });
   }
@@ -110,13 +93,11 @@ export const addEvent = (event) => {
 export const deleteEvent = (id) => {
   return function (dispatch) {
 
-    return fetch('/api/events/' + id, {
-      method: 'DELETE',
-      headers: {
+    axios.delete('/api/events/' + id,
+      {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      }
-    })
+      })
       .then(() => {
         dispatch(push('/events'));
       });
