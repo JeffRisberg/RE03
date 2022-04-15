@@ -7,7 +7,7 @@
         "start": "node server/index.js",
         "postinstall": "webpack",
         "webpack": "webpack",
-        "webpack-watch": "webpack --watch --colors",
+        "webpack-watch": "webpack --watch --color",
         "test": "jest --coverage",
         "lint": "./node_modules/.bin/eslint app",
         "prepush": "npm run lint"
