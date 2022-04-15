@@ -27,7 +27,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.IgnorePlugin(/^(buffertools)$/), // unwanted "deeper" dependency
-    new MiniCssExtractPlugin({ filename: 'public/style.css', allChunks: true })
+    new webpack.IgnorePlugin({
+      resourceRegExp: /^(buffertools)$/
+    }),
+    new MiniCssExtractPlugin({ filename: 'public/style.css' })
   ]
 };
