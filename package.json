@@ -36,7 +36,6 @@
         "babel-loader": "^8.3.0",
         "babel-plugin-module-resolver": "^4.0.0",
         "css-loader": "^6.11.0",
-        "eslint": "^6.8.0",
         "eslint-config-airbnb": "^19.0.0",
         "eslint-plugin-import": "^2.0.0",
         "eslint-plugin-jsx-a11y": "^6.0.0",
@@ -52,7 +51,7 @@
         "webpack-cli": "^4.10.0"
     },
     "dependencies": {
-        "axios": "^0.26.1",
+        "axios": "^1.6.8",
         "body-parser": "^1.20.2",
         "css-mediaquery": "^0.1.2",
         "debug": "^4.3.4",
