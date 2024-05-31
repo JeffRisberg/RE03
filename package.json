@@ -54,7 +54,7 @@
         "axios": "^1.7.2",
         "body-parser": "^1.20.2",
         "css-mediaquery": "^0.1.2",
-        "debug": "^4.3.4",
+        "debug": "^4.3.5",
         "express": "^4.19.2",
         "glob": "^8.1.0",
         "history": "^4.10.1",
@@ -72,7 +72,7 @@
         "redux-form": "^8.3.10",
         "redux-logger": "^3.0.6",
         "redux-thunk": "^2.4.2",
-        "sass": "^1.77.2",
+        "sass": "^1.77.4",
         "webpack": "^5.91.0"
     }
 }
