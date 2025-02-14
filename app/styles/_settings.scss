@@ -6,6 +6,7 @@
 // underpin a lot of how the framework functions and should be modified and
 // preconfigured with caution.
 
+@use 'sass:math';
 
 // Base typographical styles and baseline grid. You need to define these values
 // in pixels: inuitcss will convert them to more appropriate units.
@@ -34,10 +35,10 @@ $global-spacing-unit-factor-xl:   4    !default;
 
 // Private/framework-only reassignment. Do not alter anything below.
 
-$global-spacing-unit-xs: round($global-spacing-unit * $global-spacing-unit-factor-xs);
-$global-spacing-unit-sm: round($global-spacing-unit * $global-spacing-unit-factor-sm);
-$global-spacing-unit-ms: round($global-spacing-unit * $global-spacing-unit-factor-ms);
-$global-spacing-unit-md: round($global-spacing-unit * $global-spacing-unit-factor-md);
-$global-spacing-unit-ml: round($global-spacing-unit * $global-spacing-unit-factor-ml);
-$global-spacing-unit-lg: round($global-spacing-unit * $global-spacing-unit-factor-lg);
-$global-spacing-unit-xl: round($global-spacing-unit * $global-spacing-unit-factor-xl);
+$global-spacing-unit-xs: math.round($global-spacing-unit * $global-spacing-unit-factor-xs);
+$global-spacing-unit-sm: math.round($global-spacing-unit * $global-spacing-unit-factor-sm);
+$global-spacing-unit-ms: math.round($global-spacing-unit * $global-spacing-unit-factor-ms);
+$global-spacing-unit-md: math.round($global-spacing-unit * $global-spacing-unit-factor-md);
+$global-spacing-unit-ml: math.round($global-spacing-unit * $global-spacing-unit-factor-ml);
+$global-spacing-unit-lg: math.round($global-spacing-unit * $global-spacing-unit-factor-lg);
+$global-spacing-unit-xl: math.round($global-spacing-unit * $global-spacing-unit-factor-xl);
