@@ -1,11 +1,11 @@
-@import "../../../styles/_settings";
-@import "../../../styles/_colors";
+@use "../../../styles/_settings";
+@use "../../../styles/_colors";
 
 .loading, .loading--medium, .loading--small, .loading--large {
   overflow: hidden;
   position: relative;
   margin: 0 auto;
-  width: $global-spacing-unit-lg;
+  width: settings.$global-spacing-unit-lg;
 
   &::before {
     content: "";
@@ -15,11 +15,11 @@
 }
 
 .loading--small {
-  width: $global-spacing-unit-md;
+  width: settings.$global-spacing-unit-md;
 }
 
 .loading--large {
-  width: $global-spacing-unit-xl;
+  width: settings.$global-spacing-unit-xl;
 }
 
 .loading__container {
@@ -41,25 +41,25 @@
   stroke-width: 4px;
   stroke-miterlimit: 10;
   fill: none;
-  stroke: $color-dark-orchid;
+  stroke: colors.$color-dark-orchid;
   animation: dash 1.5s ease-in-out infinite;
   stroke-linecap: round;
 }
 
 .loading--purple .loading__circle {
-  stroke: $color-dark-orchid;
+  stroke: colors.$color-dark-orchid;
 }
 
 .loading--white .loading__circle {
-  stroke: $color-white;
+  stroke: colors.$color-white;
 }
 
 .jg-loading--grey .jg-loading__circle {
-  stroke: $color-nobel;
+  stroke: colors.$color-nobel;
 }
 
 .jg-loading--blue .jg-loading__circle {
-  stroke: $color-denim;
+  stroke: colors.$color-denim;
 }
 
 @keyframes rotate {
