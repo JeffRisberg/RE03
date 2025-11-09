@@ -1,5 +1,5 @@
 var path = require('path');
-var globSync = require('glob').sync;
+var { globSync } = require('glob');
 var express = require('express');
 var app = express();
 
@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../app/index.html'));
 });
 
-var nedb = require('nedb');
+var nedb = require('@seald-io/nedb');
 
 app.itemsDB = new nedb({filename: 'db-content/items', autoload: true});
 app.eventsDB = new nedb({filename: 'db-content/events', autoload: true});
