@@ -15,7 +15,7 @@ Technologies used:
 Run:
 ```
 npm install
-webpack --watch
+npm run webpack-watch
 ```
 
 Then in a separate window, start the backend as:

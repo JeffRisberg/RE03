@@ -3,7 +3,9 @@ var { globSync } = require('glob');
 var express = require('express');
 var app = express();
 
-var mocks = globSync('./mocks/**/*.js', {cwd: __dirname}).map(require);
+var mocks = globSync('./mocks/**/*.js', {cwd: __dirname}).map(function(file) {
+    return require(path.resolve(__dirname, file));
+});
 
 const PATH_STYLES = path.resolve(__dirname, '../app/styles');
 const PATH_DIST = path.resolve(__dirname, '../dist');
