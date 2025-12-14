@@ -55,7 +55,7 @@
         "body-parser": "^1.20.0",
         "css-mediaquery": "^0.1.2",
         "debug": "^4.3.5",
-        "express": "^4.19.0",
+        "express": "^4.22.0",
         "glob": "^11.0.0",
         "history": "^4.10.1",
         "jest-cli": "^26.6.3",
