@@ -91,7 +91,7 @@ export const addEvent = (event) => {
 };
 
 export const deleteEvent = (id) => {
-  return function (_dispatch) {
+  return function () {
 
     axios.delete('/api/events/' + id,
       {

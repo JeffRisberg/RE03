@@ -91,7 +91,7 @@ export const addItem = (item) => {
 };
 
 export const deleteItem = (id) => {
-  return function (_dispatch) {
+  return function () {
 
     axios.delete('/api/items/' + id,
       {
