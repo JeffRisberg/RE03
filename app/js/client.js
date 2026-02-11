@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import {Provider} from 'react-redux';
 import { createBrowserHistory } from 'history';
 
@@ -10,9 +10,9 @@ const history = createBrowserHistory({basename: '/'});
 
 const store = configureStore({initialState: {}, history});
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('app-root'));
+root.render(
   <Provider store={store}>
     <AppRoot history={history}/>
-  </Provider>,
-  document.getElementById('app-root')
+  </Provider>
 );
