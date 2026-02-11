@@ -39,7 +39,7 @@ class ItemFormComponent extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchHandler(this.props.match.params.id);
+    this.props.fetchHandler(this.props.id);
   }
 
   componentWillUnmount() {
@@ -78,7 +78,7 @@ class ItemFormComponent extends Component {
             <button type="submit" className="btn btn-default">Submit</button>
           </div>
           <div>
-            <button onClick={(e) => this.props.deleteHandler(e, this.props.match.params.id)}
+            <button onClick={(e) => this.props.deleteHandler(e, this.props.id)}
               className="btn btn-default">
               Delete
             </button>

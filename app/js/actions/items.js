@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {push} from 'react-router-redux';
+import { navigateTo } from '../navigation';
 import {initialize} from 'redux-form';
 import {ActionTypes as types, forms} from '../constants';
 
@@ -64,7 +64,7 @@ export const saveItem = (item) => {
             log: ['item changed', result.data]
           }
         });
-        dispatch(push('/items'));
+        navigateTo('/items');
       });
   };
 };
@@ -99,7 +99,7 @@ export const deleteItem = (id) => {
         'Content-Type': 'application/json'
       })
       .then(() => {
-        dispatch(push('/items'));
+        navigateTo('/items');
       });
   };
 };

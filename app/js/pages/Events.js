@@ -1,30 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import { Medium, LessThanMedium } from '../toolkit';
 import EventListContainer from '../components/Events/EventListContainer';
 import EventFormContainer from '../components/Events/EventFormContainer';
 
-class Events extends Component {
+function Events() {
+  const { id } = useParams();
 
-  render() {
-    const id = this.props.match.params != undefined ? this.props.match.params.id : undefined;
-    const content = (id != undefined) ?
-      <EventFormContainer {...this.props} /> : <EventListContainer {...this.props} />;
+  const content = (id != undefined) ?
+    <EventFormContainer id={id} /> : <EventListContainer />;
 
-    return (
-      <div>
-        <Medium>
-          <div style={{ borderBottom: '5px solid orange' }}>
-            {content}
-          </div>
-        </Medium>
-        <LessThanMedium>
-          <div style={{ borderBottom: '5px solid yellow' }}>
-            {content}
-          </div>
-        </LessThanMedium>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Medium>
+        <div style={{ borderBottom: '5px solid orange' }}>
+          {content}
+        </div>
+      </Medium>
+      <LessThanMedium>
+        <div style={{ borderBottom: '5px solid yellow' }}>
+          {content}
+        </div>
+      </LessThanMedium>
+    </div>
+  );
 }
 
 export default Events;
