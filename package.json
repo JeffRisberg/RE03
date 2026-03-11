@@ -79,7 +79,7 @@
         "redux-form": "^8.3.0",
         "redux-logger": "^3.0.0",
         "redux-thunk": "^3.0.0",
-        "sass": "^1.91.0",
+        "sass": "^1.98.0",
         "webpack": "^5.101.0"
     }
 }
